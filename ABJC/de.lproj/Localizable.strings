@@ -1,0 +1,58 @@
+/* 
+  Localizable.strings
+  ABJC
+
+  Created by Noah Kamara on 30.10.20.
+  
+*/
+
+// Tab Labels
+"search_tab_label" = "Suche";
+"watchnow_tab_label" = "Jetzt";
+"movies_tab_label" = "FIlme";
+"shows_tab_label" = "Serien";
+"preferences_tab_label" = "Einstellungen";
+
+
+// Watch Now
+"continueWatching" = "Fortfahren";
+"favorites" = "Favoriten";
+"latestMovies" = "Neuste Filme";
+"latestShows" = "Neuste Serien";
+
+
+// Search View
+"search" = "Suche";
+
+
+// Preferences
+"prefs_systemInfo_general" = "Allgemein";
+"prefs_systemInfo_networking" = "Netzwerk";
+
+
+// AuthView
+"manualEntry" = "Manuelle Eingabe";
+"continue" = "Weiter";
+"serverDiscovery" = "SERVER SUCHE";
+"username" = "name";
+"password" = "passwort";
+"signIn" = "anmelden";
+"logout" = "abmelden";
+
+"authorizationFailure" = "Fehler";
+"WrongUsernameOrPassword" = "Name oder Passwort falsch";
+"retry" = "ERNEUT";
+
+
+// Item Detail View
+"people" = "Personen";
+
+// SystemInfo
+"systemInfo_serverName" = "Server Name";
+"systemInfo_serverId" = "Server ID";
+"systemInfo_version" = "Version";
+"systemInfo_operatingSystem" = "Betriebssystem";
+"systemInfo_systemArchitecture" = "Architektur";
+"systemInfo_host" = "Host";
+"systemInfo_port" = "Port";
+
