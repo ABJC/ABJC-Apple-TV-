@@ -11,6 +11,7 @@ import AVKit
 
 struct MainViewContainer: View {
     @EnvironmentObject var session: SessionStore
+    @EnvironmentObject var player: PlayerStore
     
     
     let headers = [
@@ -21,22 +22,22 @@ struct MainViewContainer: View {
         if self.session.hasUser {
             TabView() {
                 WatchNowView()
-                    .tabItem({ Text("watchnow_tab_label") })
+                    .tabItem({ Text("main.watchnow.tablabel") })
                     .tag(0)
                 CollectionView(.movie)
-                    .tabItem({ Text("movies_tab_label") })
+                    .tabItem({ Text("main.movies.tablabel") })
                     .tag(1)
                 CollectionView(.series)
-                    .tabItem({ Text("shows_tab_label") })
+                    .tabItem({ Text("main.shows.tablabel") })
                     .tag(2)
                 SearchView()
                     .tabItem({
-                        Text("search_tab_label")
+                        Text("main.search.tablabel")
                         Image(systemName: "magnifyingglass")
                     })
                     .tag(3)
                 PreferencesView()
-                    .tabItem({ Text("preferences_tab_label") })
+                    .tabItem({ Text("main.preferences.tablabel") })
                     .tag(4)
             }
         } else {

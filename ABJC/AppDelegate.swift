@@ -15,7 +15,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     let session: SessionStore = SessionStore()
-
+    let player: PlayerStore = PlayerStore()
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         URLImageService.shared.cleanup()
 
@@ -24,6 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let contentView = MainViewContainer()
             .environment(\.managedObjectContext, persistentContainer.viewContext)
             .environmentObject(session)
+            .environmentObject(player)
 
         // Use a UIHostingController as window root view controller.
         let window = UIWindow(frame: UIScreen.main.bounds)

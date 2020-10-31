@@ -19,13 +19,13 @@ struct WatchNowView: View {
         NavigationView {
             ScrollView([.vertical]) {
                 LazyVStack(alignment: .leading) {
-                    MediaItemRow("continueWatching", self.resumableItems)
+                    MediaItemRow("watchnow.continueWatching", self.resumableItems)
                     Divider()
-                    MediaItemRow("favorites", self.favoriteItems)
+                    MediaItemRow("watchnow.favorites", self.favoriteItems)
                     Divider()
-                    MediaItemRow("latestMovies", self.latestItems.filter({$0.type == .movie}))
+                    MediaItemRow("watchnow.latestMovies", self.latestItems.filter({$0.type == .movie}))
                     Divider()
-                    MediaItemRow("latestShows", self.latestItems.filter({$0.type == .series}))
+                    MediaItemRow("watchnow.latestShows", self.latestItems.filter({$0.type == .series}))
                 }
             }.edgesIgnoringSafeArea(.horizontal)
             .onAppear(perform: load)

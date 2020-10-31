@@ -26,7 +26,7 @@ struct PeopleRow: View {
             ScrollView([.horizontal]) {
                 LazyHStack(spacing: 48) {
                     ForEach(people, id:\.id) { person in
-                        NavigationLink(destination: Text(person.name)) {
+                        Button(action: {}) {
                             PeopleItem(person)
                         }
                         .buttonStyle(PlainButtonStyle())

@@ -6,53 +6,57 @@
   
 */
 
-// Tab Labels
-"search_tab_label" = "Suche";
-"watchnow_tab_label" = "Jetzt";
-"movies_tab_label" = "FIlme";
-"shows_tab_label" = "Serien";
-"preferences_tab_label" = "Einstellungen";
+// General Buttons
+"buttons.continue" = "weiter";
+"buttons.signin" = "anmelden";
+"buttons.logout" = "abmelden";
+"buttons.retry" = "erneut";
+"buttons.play" = "play";
+"buttons.play.item" = "play";
 
-
-// Watch Now
-"continueWatching" = "Fortfahren";
-"favorites" = "Favoriten";
-"latestMovies" = "Neuste Filme";
-"latestShows" = "Neuste Serien";
-
-
-// Search View
-"search" = "Suche";
-
-
-// Preferences
-"prefs_systemInfo_general" = "Allgemein";
-"prefs_systemInfo_networking" = "Netzwerk";
-
+// MainViewContainer
+"main.watchnow.tablabel" = "Jetzt Ansehen";
+"main.movies.tablabel" = "Filme";
+"main.shows.tablabel" = "Serien";
+"main.search.tablabel" = "Suche";
+"main.preferences.tablabel" = "Einstellungen";
 
 // AuthView
-"manualEntry" = "Manuelle Eingabe";
-"continue" = "Weiter";
-"serverDiscovery" = "SERVER SUCHE";
-"username" = "name";
-"password" = "passwort";
-"signIn" = "anmelden";
-"logout" = "abmelden";
+"auth.serverselection.title" = "SERVER SUCHE";
+"auth.serverselection.manual.label" = "Manuelle Eingabe";
+"auth.serverselection.manual.descr" = "addresse eingeben";
+"auth.serverselection.host.label" = "Host";
+"auth.serverselection.port.label" = "Port";
 
-"authorizationFailure" = "Fehler";
-"WrongUsernameOrPassword" = "Name oder Passwort falsch";
-"retry" = "ERNEUT";
+"auth.credentials.title" = "ANMELDUNG";
+"auth.credentials.username.label" = "nutzername";
+"auth.credentials.password.label" = "passwort";
+"auth.credentials.error.label" = "Authentifizierung fehlgeschlagen";
+"auth.credentials.error.descr" = "Falsche Anmeldedaten oder Server-Adresse";
+
+// WatchNowView
+"watchnow.continueWatching" = "Als Nächstes";
+"watchnow.favorites" = "Favoriten";
+"watchnow.latestMovies" = "Neuste Filme";
+"watchnow.latestShows" = "Neuste Serien";
+
+// Search View
+"search.label" = "Suche";
+"search.people.label" = "Personen";
+
+// Preferences
+"pref.serverinfo.label" = "Server Info";
+"pref.serverinfo.general.label" = "Allgemeine Info";
+"pref.serverinfo.servername.label" = "Server Name";
+"pref.serverinfo.version.label" = "Version";
+"pref.serverinfo.id.label" = "Server ID";
+"pref.serverinfo.os.label" = "Betriebssystem";
+"pref.serverinfo.architecture.label" = "Architektur";
+"pref.serverinfo.networking.label" = "Netzwerk";
+"pref.serverinfo.host.label" = "Host";
+"pref.serverinfo.port.label" = "Port";
 
 
-// Item Detail View
-"people" = "Personen";
-
-// SystemInfo
-"systemInfo_serverName" = "Server Name";
-"systemInfo_serverId" = "Server ID";
-"systemInfo_version" = "Version";
-"systemInfo_operatingSystem" = "Betriebssystem";
-"systemInfo_systemArchitecture" = "Architektur";
-"systemInfo_host" = "Host";
-"systemInfo_port" = "Port";
-
+// ItemDetailView
+"itemdetail.recommended.label" = "Empfohlen";
+"itemdetail.episode.item" = "Episode";

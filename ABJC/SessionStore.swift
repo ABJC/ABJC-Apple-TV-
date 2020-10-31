@@ -9,33 +9,43 @@ import Foundation
 import JellyKit
 
 public class SessionStore: ObservableObject {
+    @Published var items: [API.Models.Item]
     @Published var user: API.AuthUser?
     
     var hasUser: Bool {
         return self.user != nil
     }
-    private(set) public var host: String = "192.168.178.10"
-    private(set) public var port: Int = 8096
+    @Published private(set) public var host: String = ""
+    @Published private(set) public var port: Int = 8096
     
     public var api: API
     
     public init() {
-        self.api = API(host, port)
         self.user = nil
+        self.api = API("", 8096)
+        self.items = []
     }
     
-    public init(_ user: API.AuthUser) {
-        self.api = API(host, port, user)
-        self.user = user
-    }
+//    public init(_ user: API.AuthUser) {
+//        self.api = API(host, port, user)
+//        self.user = user
+//    }
     
+    public func updateItems(_ items: [API.Models.Item]) {
+        DispatchQueue.main.async {
+            self.items.append(contentsOf: items.filter({!items.contains($0)}))
+        }
+    }
     public func clear() {
         KeyChain.clear(key: "credentials")
         self.user = nil
     }
+    
     public func setServer(_ host: String, _ port: Int) -> API {
-        self.host = host
-        self.port = port
+        DispatchQueue.main.async {
+            self.host = host
+            self.port = port
+        }
         if hasUser {
             self.api = API(host, port, user)
         } else {

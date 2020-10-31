@@ -11,17 +11,9 @@ import AVKit
 
 struct PlayerView: View {
     @EnvironmentObject var session: SessionStore
-    private let item: API.Models.Item
-    
-    @State var streamURL: URL? = nil
-
-    init(_ item: API.Models.Item) {
-        self.item = item
-    }
-    
-    
-    @State var player: AVPlayer = AVPlayer()
+    @EnvironmentObject var player: PlayerStore
         
+    @State var streamURL: URL? = nil
     var body: some View {
         ZStack {
             Color.primary
@@ -33,7 +25,9 @@ struct PlayerView: View {
     }
     
     func initPlayback() {
-        let url = session.api.getStreamURL(for: item.id)
+        
+        let url = session.api.getStreamURL(for: player.playItem!.id)
+        print(url)
         self.streamURL = url
     }
     
@@ -42,13 +36,8 @@ struct PlayerView: View {
     }
 }
 
-
-class PlayerStore: NSObject, AVPlayerViewControllerDelegate {
-    
-}
-
 struct PlayerViewController: UIViewControllerRepresentable {
-    let playerStore = PlayerStore()
+    let delegate = PlayerDelegate()
     var videoURL: URL? = nil
     var videoData: Data? = nil
     var autostart: Bool
@@ -66,7 +55,7 @@ struct PlayerViewController: UIViewControllerRepresentable {
         controller.playbackControlsIncludeInfoViews = true
         controller.playbackControlsIncludeTransportBar = true
         controller.showsPlaybackControls = true
-        controller.delegate = self.playerStore
+        controller.delegate = delegate
         return controller
     }
     
@@ -82,11 +71,16 @@ struct PlayerViewController: UIViewControllerRepresentable {
             try? AVAudioSession.sharedInstance().setActive(true, options: [.notifyOthersOnDeactivation])
             
             vc.player = player
+            vc.player?.play()
             vc.showsPlaybackControls = true
+            
         }
         
         vc.allowsPictureInPicturePlayback = true
     }
+}
+
+class PlayerDelegate: NSObject, AVPlayerViewControllerDelegate {
 }
 
 

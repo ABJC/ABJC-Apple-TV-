@@ -14,17 +14,14 @@ struct PreferencesView: View {
         NavigationView {
             Form {
                 NavigationLink(destination: ServerInfoView()) {
-                    Label("Server Info", systemImage: "server.rack")
-                }
-                NavigationLink(destination: ServerInfoView()) {
-                    Label("Server Info", systemImage: "server.rack")
+                    Label("pref.serverinfo.label", systemImage: "server.rack")
                 }
                 Button(action: {
                     self.session.clear()
                 }) {
                     HStack {
                         Spacer()
-                        Text("logout")
+                        Text("buttons.logout")
                             .bold()
                             .textCase(.uppercase)
                             .foregroundColor(.red)

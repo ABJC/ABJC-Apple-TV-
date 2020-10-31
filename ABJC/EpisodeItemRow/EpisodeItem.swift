@@ -1,19 +1,19 @@
 //
-//  MediaItem.swift
+//  EpisodeItem.swift
 //  ABJC
 //
-//  Created by Noah Kamara on 28.10.20.
+//  Created by Noah Kamara on 31.10.20.
 //
 
 import SwiftUI
 import URLImage
 import JellyKit
 
-public struct MediaItem: View {
+public struct EpisodeItem: View {
     @EnvironmentObject var session: SessionStore
-    var item: API.Models.Item
+    var item: API.Models.Episode
     
-    public init(_ item: API.Models.Item) {
+    public init(_ item: API.Models.Episode) {
         self.item = item
     }
     
@@ -25,11 +25,11 @@ public struct MediaItem: View {
     
     public var body: some View {
         URLImage(
-            url: session.api.getImageURL(for: item.id, .backdrop),
+            url: session.api.getImageURL(for: item.id, .thumb),
             options: URLImageOptions(
-                identifier: item.id+"Backdrop",
+                identifier: item.id+"Thumb",
                 expireAfter: .infinity,
-                cachePolicy: .returnCacheReload(cacheDelay: 0, downloadDelay: 0.25)
+                cachePolicy: .returnCacheReload(cacheDelay: 0.1, downloadDelay: 0.25)
             ),
             empty: { self.placeholder },
             inProgress: { progress in
@@ -56,18 +56,20 @@ public struct MediaItem: View {
         .aspectRatio(16/9, contentMode: .fill)
         .clipped()
         .frame(width: 548, height: 548*9/16)
-        .overlay(
-            GeometryReader() { geo in
-                if item.userData.playbackPosition != 0 {
-                    ZStack(alignment: .leading) {
-                        Capsule()
-                        Capsule()
-                            .fill(Color.green)
-                            .frame(width: (geo.size.width-40) * CGFloat(item.userData.playbackPosition / item.runTime))
-                    }.frame(height: 10).padding(20)
-                }
-            }.frame(width: 548)
-        , alignment: .bottom)
+//        .overlay(
+//            GeometryReader() { geo in
+//                if item.userData!.playbackPosition != 0 {
+//                    ZStack(alignment: .leading) {
+//                        Capsule()
+//                        Capsule()
+//                            .fill(Color.green)
+//                            .frame(width: (geo.size.width-40) * CGFloat(item.userData!.playbackPosition / item.runTime))
+////                            .onAppear() {
+////                                print("ITEM \(item.name) \n  RUNTIME: \(item.runTime) \n  POSITION: \(item.userData.playbackPosition) \n \((item.userData.playbackPosition / item.runTime)) \n  WIDTH: \((geo.size.width-40) * CGFloat(item.userData.playbackPosition / item.runTime))")
+////                            }
+//                    }.frame(height: 10).padding(20)
+//                }
+//            }.frame(width: 548)
+//        , alignment: .bottom)
     }
 }
-

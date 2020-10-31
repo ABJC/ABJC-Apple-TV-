@@ -15,7 +15,6 @@
 		FD3DF72C254834FA00E891E2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD3DF72A254834FA00E891E2 /* LaunchScreen.storyboard */; };
 		FD3DF737254834FA00E891E2 /* ABJCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3DF736254834FA00E891E2 /* ABJCTests.swift */; };
 		FD3DF742254834FA00E891E2 /* ABJCUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3DF741254834FA00E891E2 /* ABJCUITests.swift */; };
-		FD3DF7572548353500E891E2 /* JellyKit in Frameworks */ = {isa = PBXBuildFile; productRef = FD3DF7562548353500E891E2 /* JellyKit */; };
 		FD3DF75E2548356900E891E2 /* CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3DF75D2548356900E891E2 /* CollectionView.swift */; };
 		FD3DF763254835DE00E891E2 /* SessionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3DF762254835DE00E891E2 /* SessionStore.swift */; };
 		FD68BE11254C27DE0098549A /* PreferencesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD68BE10254C27DE0098549A /* PreferencesView.swift */; };
@@ -36,6 +35,12 @@
 		FDB917A5254A0F4A00C8BFD9 /* FocusedValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDB917A4254A0F4A00C8BFD9 /* FocusedValues.swift */; };
 		FDB917CE254A212800C8BFD9 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDB917CD254A212800C8BFD9 /* TestView.swift */; };
 		FDB917DC254AE25200C8BFD9 /* URLImage in Frameworks */ = {isa = PBXBuildFile; productRef = FDB917DB254AE25200C8BFD9 /* URLImage */; };
+		FDBDC986254DAB8E000C75DF /* PlayerStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDBDC985254DAB8E000C75DF /* PlayerStore.swift */; };
+		FDC2E8F4254C8258003BCFF1 /* JellyKit in Frameworks */ = {isa = PBXBuildFile; productRef = FDC2E8F3254C8258003BCFF1 /* JellyKit */; };
+		FDC8ECBB254D808700F3F71C /* MovieDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC8ECBA254D808700F3F71C /* MovieDetailView.swift */; };
+		FDC8ECC0254D8A5400F3F71C /* SeriesDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC8ECBF254D8A5400F3F71C /* SeriesDetailView.swift */; };
+		FDC8ECC5254D8DA600F3F71C /* EpisodeRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC8ECC4254D8DA600F3F71C /* EpisodeRow.swift */; };
+		FDC8ECCA254D8E1B00F3F71C /* EpisodeItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC8ECC9254D8E1B00F3F71C /* EpisodeItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,7 +61,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		FD3DF71B254834F700E891E2 /* ABJC (ATV).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ABJC (ATV).app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FD3DF71B254834F700E891E2 /* ABJC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ABJC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD3DF71E254834F700E891E2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FD3DF720254834F700E891E2 /* MainViewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewContainer.swift; sourceTree = "<group>"; };
 		FD3DF723254834F700E891E2 /* ABJC.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ABJC.xcdatamodel; sourceTree = "<group>"; };
@@ -92,6 +97,11 @@
 		FDB9179F254A0BF800C8BFD9 /* BlurHash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurHash.swift; sourceTree = "<group>"; };
 		FDB917A4254A0F4A00C8BFD9 /* FocusedValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusedValues.swift; sourceTree = "<group>"; };
 		FDB917CD254A212800C8BFD9 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
+		FDBDC985254DAB8E000C75DF /* PlayerStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerStore.swift; sourceTree = "<group>"; };
+		FDC8ECBA254D808700F3F71C /* MovieDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailView.swift; sourceTree = "<group>"; };
+		FDC8ECBF254D8A5400F3F71C /* SeriesDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesDetailView.swift; sourceTree = "<group>"; };
+		FDC8ECC4254D8DA600F3F71C /* EpisodeRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeRow.swift; sourceTree = "<group>"; };
+		FDC8ECC9254D8E1B00F3F71C /* EpisodeItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,8 +110,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				FDB917DC254AE25200C8BFD9 /* URLImage in Frameworks */,
+				FDC2E8F4254C8258003BCFF1 /* JellyKit in Frameworks */,
 				FD68BE47254C412D0098549A /* TVServices.framework in Frameworks */,
-				FD3DF7572548353500E891E2 /* JellyKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,7 +147,7 @@
 		FD3DF71C254834F700E891E2 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				FD3DF71B254834F700E891E2 /* ABJC (ATV).app */,
+				FD3DF71B254834F700E891E2 /* ABJC.app */,
 				FD3DF732254834FA00E891E2 /* ABJCTests.xctest */,
 				FD3DF73D254834FA00E891E2 /* ABJCUITests.xctest */,
 			);
@@ -156,11 +166,13 @@
 				FDB9179A2549FFDC00C8BFD9 /* WatchNowView.swift */,
 				FD68BE10254C27DE0098549A /* PreferencesView.swift */,
 				FD68BE29254C332E0098549A /* SearchView.swift */,
-				FDB916DB254853E800C8BFD9 /* ItemDetailView.swift */,
+				FDC8ECD8254D8EE800F3F71C /* DetailViews */,
+				FDC8ECD4254D8EE100F3F71C /* EpisodeItemRow */,
 				FD68BE22254C2DB70098549A /* PreferencesViews */,
 				FDB917E1254AE2C900C8BFD9 /* MediaItemRow */,
 				FDB917E0254AE2C000C8BFD9 /* PeopleRow */,
 				FDB916E02548D89E00C8BFD9 /* Player.swift */,
+				FDBDC985254DAB8E000C75DF /* PlayerStore.swift */,
 				FDB9179F254A0BF800C8BFD9 /* BlurHash.swift */,
 				FDB917A4254A0F4A00C8BFD9 /* FocusedValues.swift */,
 				FDB916CD254837FA00C8BFD9 /* Extensions.swift */,
@@ -234,12 +246,31 @@
 			path = MediaItemRow;
 			sourceTree = "<group>";
 		};
+		FDC8ECD4254D8EE100F3F71C /* EpisodeItemRow */ = {
+			isa = PBXGroup;
+			children = (
+				FDC8ECC4254D8DA600F3F71C /* EpisodeRow.swift */,
+				FDC8ECC9254D8E1B00F3F71C /* EpisodeItem.swift */,
+			);
+			path = EpisodeItemRow;
+			sourceTree = "<group>";
+		};
+		FDC8ECD8254D8EE800F3F71C /* DetailViews */ = {
+			isa = PBXGroup;
+			children = (
+				FDB916DB254853E800C8BFD9 /* ItemDetailView.swift */,
+				FDC8ECBA254D808700F3F71C /* MovieDetailView.swift */,
+				FDC8ECBF254D8A5400F3F71C /* SeriesDetailView.swift */,
+			);
+			path = DetailViews;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		FD3DF71A254834F700E891E2 /* ABJC (ATV) */ = {
+		FD3DF71A254834F700E891E2 /* ABJC */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FD3DF746254834FA00E891E2 /* Build configuration list for PBXNativeTarget "ABJC (ATV)" */;
+			buildConfigurationList = FD3DF746254834FA00E891E2 /* Build configuration list for PBXNativeTarget "ABJC" */;
 			buildPhases = (
 				FD3DF717254834F700E891E2 /* Sources */,
 				FD3DF718254834F700E891E2 /* Frameworks */,
@@ -249,13 +280,13 @@
 			);
 			dependencies = (
 			);
-			name = "ABJC (ATV)";
+			name = ABJC;
 			packageProductDependencies = (
-				FD3DF7562548353500E891E2 /* JellyKit */,
 				FDB917DB254AE25200C8BFD9 /* URLImage */,
+				FDC2E8F3254C8258003BCFF1 /* JellyKit */,
 			);
 			productName = ABJC;
-			productReference = FD3DF71B254834F700E891E2 /* ABJC (ATV).app */;
+			productReference = FD3DF71B254834F700E891E2 /* ABJC.app */;
 			productType = "com.apple.product-type.application";
 		};
 		FD3DF731254834FA00E891E2 /* ABJCTests */ = {
@@ -332,7 +363,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				FD3DF71A254834F700E891E2 /* ABJC (ATV) */,
+				FD3DF71A254834F700E891E2 /* ABJC */,
 				FD3DF731254834FA00E891E2 /* ABJCTests */,
 				FD3DF73C254834FA00E891E2 /* ABJCUITests */,
 			);
@@ -374,17 +405,22 @@
 			files = (
 				FD68BE2A254C332E0098549A /* SearchView.swift in Sources */,
 				FD3DF721254834F700E891E2 /* MainViewContainer.swift in Sources */,
+				FDBDC986254DAB8E000C75DF /* PlayerStore.swift in Sources */,
 				FDB916CE254837FA00C8BFD9 /* Extensions.swift in Sources */,
 				FDB916DC254853E800C8BFD9 /* ItemDetailView.swift in Sources */,
+				FDC8ECC0254D8A5400F3F71C /* SeriesDetailView.swift in Sources */,
 				FDB917872549BBC000C8BFD9 /* AuthView.swift in Sources */,
 				FDB917822549B2EC00C8BFD9 /* PeopleItem.swift in Sources */,
+				FDC8ECBB254D808700F3F71C /* MovieDetailView.swift in Sources */,
 				FD3DF763254835DE00E891E2 /* SessionStore.swift in Sources */,
 				FDB916E12548D89E00C8BFD9 /* Player.swift in Sources */,
 				FDB917A5254A0F4A00C8BFD9 /* FocusedValues.swift in Sources */,
 				FDB917CE254A212800C8BFD9 /* TestView.swift in Sources */,
 				FDB9177A2549B1F800C8BFD9 /* PeopleRow.swift in Sources */,
+				FDC8ECCA254D8E1B00F3F71C /* EpisodeItem.swift in Sources */,
 				FD3DF71F254834F700E891E2 /* AppDelegate.swift in Sources */,
 				FDB916E62549979600C8BFD9 /* MediaItemRow.swift in Sources */,
+				FDC8ECC5254D8DA600F3F71C /* EpisodeRow.swift in Sources */,
 				FDB916EB25499A8D00C8BFD9 /* MediaItem.swift in Sources */,
 				FD68BE11254C27DE0098549A /* PreferencesView.swift in Sources */,
 				FDB9179B2549FFDC00C8BFD9 /* WatchNowView.swift in Sources */,
@@ -416,12 +452,12 @@
 /* Begin PBXTargetDependency section */
 		FD3DF734254834FA00E891E2 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = FD3DF71A254834F700E891E2 /* ABJC (ATV) */;
+			target = FD3DF71A254834F700E891E2 /* ABJC */;
 			targetProxy = FD3DF733254834FA00E891E2 /* PBXContainerItemProxy */;
 		};
 		FD3DF73F254834FA00E891E2 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = FD3DF71A254834F700E891E2 /* ABJC (ATV) */;
+			target = FD3DF71A254834F700E891E2 /* ABJC */;
 			targetProxy = FD3DF73E254834FA00E891E2 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -572,7 +608,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "ABJC (ATV).entitlements";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"ABJC/Preview Content\"";
 				DEVELOPMENT_TEAM = ME2UKFKL5H;
 				ENABLE_PREVIEWS = YES;
@@ -584,8 +622,10 @@
 				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.noahkamara.ABJC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "ABJC - tvOS App Store";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 14.0;
 			};
 			name = Debug;
 		};
@@ -595,7 +635,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "ABJC (ATV).entitlements";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"ABJC/Preview Content\"";
 				DEVELOPMENT_TEAM = ME2UKFKL5H;
 				ENABLE_PREVIEWS = YES;
@@ -607,8 +649,10 @@
 				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.noahkamara.ABJC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "ABJC - tvOS App Store";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 14.0;
 			};
 			name = Release;
 		};
@@ -708,7 +752,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FD3DF746254834FA00E891E2 /* Build configuration list for PBXNativeTarget "ABJC (ATV)" */ = {
+		FD3DF746254834FA00E891E2 /* Build configuration list for PBXNativeTarget "ABJC" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FD3DF747254834FA00E891E2 /* Debug */,
@@ -738,13 +782,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		FD3DF7562548353500E891E2 /* JellyKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = JellyKit;
-		};
 		FDB917DB254AE25200C8BFD9 /* URLImage */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = URLImage;
+		};
+		FDC2E8F3254C8258003BCFF1 /* JellyKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = JellyKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 

@@ -40,9 +40,12 @@ struct CollectionView: View {
     }
     
     func load() {
+        self.items = session.items.filter({$0.type == self.type})
         session.api.getItems(self.type) { result in
             switch result {
-            case .success(let items): self.items = items
+            case .success(let items):
+                session.updateItems(items)
+                self.items = items
             case .failure(let error): print(error)
             }
         }

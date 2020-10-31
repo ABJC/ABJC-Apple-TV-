@@ -1,6 +1,6 @@
 //
 //  BlurHash.swift
-//  ABJC (ATV)
+//  ABJCKit
 //
 //  Created by Noah Kamara on 28.10.20.
 //

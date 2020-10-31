@@ -6,53 +6,59 @@
   
 */
 
-// Tab Labels
-"search_tab_label" = "Search";
-"watchnow_tab_label" = "Watch Now";
-"movies_tab_label" = "Movies";
-"shows_tab_label" = "TV Shows";
-"preferences_tab_label" = "Preferences";
+// General Buttons
+"buttons.continue" = "continue";
+"buttons.signin" = "sign in";
+"buttons.logout" = "logout";
+"buttons.retry" = "retry";
+"buttons.play" = "play";
+"buttons.play.item" = "play";
 
-
-// Watch Now
-"continueWatching" = "Continue Watching";
-"favorites" = "Favorites";
-"latestMovies" = "Latest Movies";
-"latestShows" = "Latest TV Shows";
-
-
-// Search View
-"search" = "Search";
-
-
-// Preferences
-"prefs_systemInfo_general" = "General Info";
-"prefs_systemInfo_networking" = "Networking";
-
+// MainViewContainer
+"main.watchnow.tablabel" = "Watch Now";
+"main.movies.tablabel" = "Movies";
+"main.shows.tablabel" = "TV Shows";
+"main.search.tablabel" = "Search";
+"main.preferences.tablabel" = "Preferences";
 
 // AuthView
-"manualEntry" = "Manual Entry";
-"continue" = "Continue";
-"serverDiscovery" = "SERVER DISCOVERY";
-"username" = "username";
-"password" = "password";
-"signIn" = "sign in";
-"logout" = "logout";
+"auth.serverselection.title" = "SERVER DISCOVERY";
+"auth.serverselection.manual.label" = "Manual Entry";
+"auth.serverselection.manual.descr" = "enter address";
+"auth.serverselection.host.label" = "Host";
+"auth.serverselection.port.label" = "Port";
 
-"authorizationFailure" = "Authorization Failure";
-"WrongUsernameOrPassword" = "Wrong Username or Password";
-"retry" = "RETRY";
+"auth.credentials.title" = "SIGN IN";
+"auth.credentials.username.label" = "username";
+"auth.credentials.password.label" = "password";
+"auth.credentials.error.label" = "Authorization Failure";
+"auth.credentials.error.descr" = "Wrong Credentials or Server Adress";
+
+// WatchNowView
+"watchnow.continueWatching" = "Continue Watching";
+"watchnow.favorites" = "Favorites";
+"watchnow.latestMovies" = "Latest Movies";
+"watchnow.latestShows" = "Latest TV Shows";
+
+// Search View
+"search.label" = "Search";
+"search.people.label" = "People";
+
+// Preferences
+"pref.serverinfo.label" = "Server Info";
+"pref.serverinfo.general.label" = "General Info";
+"pref.serverinfo.servername.label" = "Server Name";
+"pref.serverinfo.version.label" = "Version";
+"pref.serverinfo.servername.label" = "Server Name";
+"pref.serverinfo.id.label" = "Server ID";
+"pref.serverinfo.os.label" = "Operating System";
+"pref.serverinfo.architecture.label" = "Architecture";
+"pref.serverinfo.networking.label" = "Networking";
+"pref.serverinfo.host.label" = "Host";
+"pref.serverinfo.port.label" = "Port";
 
 
-// Item Detail View
-"people" = "People";
-
-// SystemInfo
-"systemInfo_serverName" = "Server Name";
-"systemInfo_serverId" = "Server ID";
-"systemInfo_version" = "Version";
-"systemInfo_operatingSystem" = "Operating System";
-"systemInfo_systemArchitecture" = "Architecture";
-"systemInfo_host" = "Host";
-"systemInfo_port" = "Port";
+// ItemDetailView
+"itemdetail.recommended.label" = "Recommended";
+"itemdetail.episode.item" = "Episode";
 

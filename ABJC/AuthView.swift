@@ -66,6 +66,17 @@ struct AuthView: View {
                 if !self.showManualEntry {
                     ScrollView([.horizontal]) {
                         LazyHStack(alignment: .center) {
+                            Button(action: { self.showManualEntry.toggle() }) {
+                                VStack {
+                                    Text("auth.serverselection.manual.label")
+                                        .bold()
+                                        .font(.headline)
+                                        .textCase(.uppercase)
+                                    Text("auth.serverselection.manual.descr")
+                                        .font(.callout)
+                                        .foregroundColor(.secondary)
+                                }
+                            }
                             ForEach(self.discoveredServers, id:\.id) { server in
                                 NavigationLink(destination: AccountCredentialView(server.host, server.port)) {
                                     VStack {
@@ -81,24 +92,21 @@ struct AuthView: View {
                             }
                         }
                     }.onAppear(perform: discover)
-                    Button(action: { self.showManualEntry.toggle() }) {
-                        Text("manualEntry")
-                    }
                 } else {
                     Group() {
-                        TextField("Host", text: self.$host)
-                        TextField("Port", text: self.$port)
+                        TextField("auth.serverselection.host.label", text: self.$host)
+                        TextField("auth.serverselection.port.label", text: self.$port)
                             .textContentType(.oneTimeCode)
                             .keyboardType(.numberPad)
                     }.frame(width: 400)
                     Button(action: { self.showManualEntry.toggle() }) {
-                        Text("continue").textCase(.uppercase)
+                        Text("buttons.continue").textCase(.uppercase)
                     }
                 }
                 
                 Spacer()
             }
-            .navigationTitle("serverDiscovery")
+            .navigationTitle("auth.serverselection.title")
         }
         
         func discover() {
@@ -141,21 +149,24 @@ struct AuthView: View {
                                 .font(.callout)
                                 .foregroundColor(.secondary)
                         }
-                        TextField("username", text: self.$username)
+                        TextField("auth.credentials.username.label", text: self.$username)
                             .textContentType(.username)
-                        TextField("password", text: self.$password)
+                        TextField("auth.credentials.password.label", text: self.$password)
                             .textContentType(.password)
                     }.frame(width: 400)
                     
                     Button(action: authorize) {
-                        Text("signIn").textCase(.uppercase)
+                        Text("buttons.signin").textCase(.uppercase)
                     }
                 }
                 .alert(isPresented: $showingAlert) {
-                    Alert(title: Text("authorizationFailure"), message: Text("WrongUsernameOrPassword"), dismissButton: .default(Text("retry")))
+                    Alert(title: Text("auth.credentials.error.label"), message: Text("auth.credentials.error.descr"), dismissButton: .default(Text("buttons.retry")))
                 }
                 
-                .navigationTitle("signIn")
+                .navigationTitle("auth.credentials.title")
+            }
+            .onAppear() {
+                _ = session.setServer(self.host, self.port)
             }
         }
         

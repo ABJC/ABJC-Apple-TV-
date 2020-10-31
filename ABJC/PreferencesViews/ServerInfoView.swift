@@ -16,41 +16,41 @@ struct ServerInfoView: View {
         Group() {
             if let data = systemInfo {
                 Form() {
-                    Section(header: Label("prefs_systemInfo_general", image: "externaldrive.connected.to.line.below")) {
+                    Section(header: Label("pref.serverinfo.general.label", image: "externaldrive.connected.to.line.below")) {
                         HStack {
-                            Text("systemInfo_serverName")
+                            Text("pref.serverinfo.servername.label")
                             Spacer()
                             Text(data.serverName)
                         }.focusable(true)
                         HStack {
-                            Text("systemInfo_version")
+                            Text("pref.serverinfo.version.label")
                             Spacer()
                             Text(data.version)
                         }
                         HStack {
-                            Text("systemInfo_erverId")
+                            Text("pref.serverinfo.id.label")
                             Spacer()
                             Text(data.serverId)
                         }
                         HStack {
-                            Text("systemInfo_operatingSystem")
+                            Text("pref.serverinfo.os.label")
                             Spacer()
                             Text(data.operatingSystemName)
                         }
                         HStack {
-                            Text("systemInfo_systemArchitecture")
+                            Text("pref.serverinfo.architecture.label")
                             Spacer()
                             Text(data.systemArchitecture)
                         }
                     }
-                    Section(header: Label("prefs_systemInfo_networking", image: "network")) {
+                    Section(header: Label("pref.serverinfo.networking.label", image: "network")) {
                         HStack {
-                            Text("systemInfo_host")
+                            Text("pref.serverinfo.host.label")
                             Spacer()
                             Text(data.host)
                         }
                         HStack {
-                            Text("systemInfo_port")
+                            Text("pref.serverinfo.port.label")
                             Spacer()
                             Text(String(data.port))
                         }

@@ -11,17 +11,23 @@ import URLImage
 
 public struct MediaItemRow: View {
     @EnvironmentObject var session: SessionStore
-    var label: String
+    var label: LocalizedStringKey
     var items: [API.Models.Item]
     
     public init(_ label: String, _ items: [API.Models.Item]) {
+        self.label = LocalizedStringKey(label)
+        self.items = items
+    }
+    
+    public init(_ label: LocalizedStringKey, _ items: [API.Models.Item]) {
         self.label = label
         self.items = items
     }
     
     public var body: some View {
-        VStack(alignment: .leading, spacing: 10) {
-            Text(label).font(.title3)
+        VStack(alignment: .leading) {
+            Text(label)
+                .font(.title3)
                 .padding(.horizontal, 80)
             ScrollView([.horizontal]) {
                 LazyHStack(spacing: 48) {

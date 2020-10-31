@@ -18,7 +18,7 @@ struct SearchView: View {
     var body: some View {
         NavigationView {
             ScrollView([.vertical]) {
-                TextField("search", text: $query, onCommit: search)
+                TextField("search.label", text: $query, onCommit: search)
                     .padding(.horizontal, 80)
                 LazyVStack(alignment: .leading) {
                     if items.count != 0 {
@@ -41,7 +41,7 @@ struct SearchView: View {
                     
                     if people.count != 0 {
                         Divider()
-                        Text("people").font(.title3)
+                        Text("search.people.label").font(.title3)
                             .padding(.horizontal, 80)
                         ScrollView([.horizontal]) {
                             LazyHStack(spacing: 48) {
