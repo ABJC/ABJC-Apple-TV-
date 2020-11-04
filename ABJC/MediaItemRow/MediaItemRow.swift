@@ -25,7 +25,7 @@ public struct MediaItemRow: View {
     }
     
     public var body: some View {
-        VStack(alignment: .leading) {
+        VStack(alignment: .leading, spacing: 0) {
             Text(label)
                 .font(.title3)
                 .padding(.horizontal, 80)
@@ -39,8 +39,8 @@ public struct MediaItemRow: View {
                     }
                 }
                 .padding(.leading, 80)
-                .padding(.bottom, 60)
-                .padding(.top, 20)
+                .padding(.bottom, 50)
+                .padding(.top)
             }
         }
     }

@@ -13,6 +13,7 @@ struct MainViewContainer: View {
     @EnvironmentObject var session: SessionStore
     @EnvironmentObject var player: PlayerStore
     
+    @State var alertError: AlertError? = nil
     
     let headers = [
         "X-Emby-Authorization": "Emby Client=abjc, Device=iOS, DeviceId=12345678, Version=1.0.0",
@@ -21,13 +22,13 @@ struct MainViewContainer: View {
     var body: some View {
         if self.session.hasUser {
             TabView() {
-                WatchNowView()
+                WatchNowView($alertError)
                     .tabItem({ Text("main.watchnow.tablabel") })
                     .tag(0)
-                CollectionView(.movie)
+                CollectionView(.movie, $alertError)
                     .tabItem({ Text("main.movies.tablabel") })
                     .tag(1)
-                CollectionView(.series)
+                CollectionView(.series, $alertError)
                     .tabItem({ Text("main.shows.tablabel") })
                     .tag(2)
                 SearchView()
@@ -39,6 +40,8 @@ struct MainViewContainer: View {
                 PreferencesView()
                     .tabItem({ Text("main.preferences.tablabel") })
                     .tag(4)
+            }.alert(item: self.$alertError) { (alertError) -> Alert in
+                Alert(title: Text(alertError.title), message: Text(alertError.description), dismissButton: .default(Text("buttons.ok")))
             }
         } else {
             AuthView()

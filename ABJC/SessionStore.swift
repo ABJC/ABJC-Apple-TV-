@@ -10,15 +10,20 @@ import JellyKit
 
 public class SessionStore: ObservableObject {
     @Published var items: [API.Models.Item]
+    
     @Published var user: API.AuthUser?
     
-    var hasUser: Bool {
-        return self.user != nil
-    }
     @Published private(set) public var host: String = ""
     @Published private(set) public var port: Int = 8096
     
     public var api: API
+    
+    var hasUser: Bool {
+        return self.user != nil
+    }
+    
+    
+    
     
     public init() {
         self.user = nil

@@ -11,11 +11,13 @@ import URLImage
 
 struct CollectionView: View {
     @EnvironmentObject var session: SessionStore
+    @Binding var alertError: AlertError?
     
     private let type: API.Models.MediaType?
     
-    public init(_ type: API.Models.MediaType? = nil) {
+    public init(_ type: API.Models.MediaType? = nil, _ alertError: Binding<AlertError?>) {
         self.type = type
+        self._alertError = alertError
     }
     
     
@@ -46,7 +48,7 @@ struct CollectionView: View {
             case .success(let items):
                 session.updateItems(items)
                 self.items = items
-            case .failure(let error): print(error)
+            case .failure(let error): self.alertError = AlertError("alerts.apierror", error.localizedDescription)
             }
         }
     }
@@ -54,6 +56,6 @@ struct CollectionView: View {
 
 struct CollectionView_Previews: PreviewProvider {
     static var previews: some View {
-        CollectionView(.movie)
+        CollectionView(.movie, .constant(nil))
     }
 }

@@ -4,34 +4,13 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>ABJC 1.xcscheme_^#shared#^_</key>
+		<key>ABJC.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>5</integer>
 		</dict>
-		<key>ABJC.xcscheme_^#shared#^_</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>4</integer>
-		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
-	<dict>
-		<key>FD3DF71A254834F700E891E2</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>FD3DF731254834FA00E891E2</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>FD3DF73C254834FA00E891E2</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-	</dict>
+	<dict/>
 </dict>
 </plist>

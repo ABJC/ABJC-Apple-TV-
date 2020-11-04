@@ -9,7 +9,7 @@ import SwiftUI
 import JellyKit
 struct AuthView: View {
     @EnvironmentObject var session: SessionStore
-        
+    
     @State var progress: Bool = false
     @State var serverSelection: Bool = true
     @State var didTrySignIn: Bool = false

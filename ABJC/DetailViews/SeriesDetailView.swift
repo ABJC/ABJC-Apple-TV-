@@ -56,7 +56,7 @@ struct SeriesDetailView: View {
             switch result {
             case .success(let items):
                 self.episodes = items.sorted(by: {$0.parentIndex <= $1.parentIndex && $0.index ?? 0 <= $1.index ?? 0})
-                self.selectedEpisode = episodes.first(where: {$0.userData?.played != true})
+                self.selectedEpisode = episodes.first(where: {$0.userData.played != true})
                 self.selectedSeason = seasons.firstIndex(of: seasons.first(where: {$0.index == selectedEpisode!.parentIndex})!) ?? 0
             case .failure(let error): print(error)
             }

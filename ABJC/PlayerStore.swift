@@ -32,9 +32,11 @@ class PlayerStore: ObservableObject {
 extension PlayerStore {
     class PlayItem: Identifiable {
         public let id: String
+        private let userData: API.Models.UserData
         
         public init(_ item: Playable) {
             self.id = item.id
+            self.userData = item.userData
         }
     }
 }

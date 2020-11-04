@@ -41,6 +41,7 @@
 		FDC8ECC0254D8A5400F3F71C /* SeriesDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC8ECBF254D8A5400F3F71C /* SeriesDetailView.swift */; };
 		FDC8ECC5254D8DA600F3F71C /* EpisodeRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC8ECC4254D8DA600F3F71C /* EpisodeRow.swift */; };
 		FDC8ECCA254D8E1B00F3F71C /* EpisodeItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC8ECC9254D8E1B00F3F71C /* EpisodeItem.swift */; };
+		FDD5AEC92552CE83009C5A36 /* AlertError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD5AEC82552CE83009C5A36 /* AlertError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,6 +103,7 @@
 		FDC8ECBF254D8A5400F3F71C /* SeriesDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesDetailView.swift; sourceTree = "<group>"; };
 		FDC8ECC4254D8DA600F3F71C /* EpisodeRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeRow.swift; sourceTree = "<group>"; };
 		FDC8ECC9254D8E1B00F3F71C /* EpisodeItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeItem.swift; sourceTree = "<group>"; };
+		FDD5AEC82552CE83009C5A36 /* AlertError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -172,6 +174,7 @@
 				FDB917E1254AE2C900C8BFD9 /* MediaItemRow */,
 				FDB917E0254AE2C000C8BFD9 /* PeopleRow */,
 				FDB916E02548D89E00C8BFD9 /* Player.swift */,
+				FDD5AEC82552CE83009C5A36 /* AlertError.swift */,
 				FDBDC985254DAB8E000C75DF /* PlayerStore.swift */,
 				FDB9179F254A0BF800C8BFD9 /* BlurHash.swift */,
 				FDB917A4254A0F4A00C8BFD9 /* FocusedValues.swift */,
@@ -424,6 +427,7 @@
 				FDB916EB25499A8D00C8BFD9 /* MediaItem.swift in Sources */,
 				FD68BE11254C27DE0098549A /* PreferencesView.swift in Sources */,
 				FDB9179B2549FFDC00C8BFD9 /* WatchNowView.swift in Sources */,
+				FDD5AEC92552CE83009C5A36 /* AlertError.swift in Sources */,
 				FD3DF75E2548356900E891E2 /* CollectionView.swift in Sources */,
 				FD68BE1E254C2DAE0098549A /* ServerInfoView.swift in Sources */,
 				FD3DF724254834F700E891E2 /* ABJC.xcdatamodeld in Sources */,

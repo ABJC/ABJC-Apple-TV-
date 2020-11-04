@@ -10,10 +10,15 @@ import JellyKit
 
 struct WatchNowView: View {
     @EnvironmentObject var session: SessionStore
+    @Binding var alertError: AlertError?
     
     @State var resumableItems: [API.Models.Item] = []
     @State var favoriteItems: [API.Models.Item] = []
     @State var latestItems: [API.Models.Item] = []
+    
+    public init(_ alertError: Binding<AlertError?>) {
+        self._alertError = alertError
+    }
     
     var body: some View {
         NavigationView {
@@ -36,21 +41,21 @@ struct WatchNowView: View {
         session.api.getLatest() { (result) in
             switch result {
             case .success(let items): self.latestItems = items
-            case .failure(let error): print(error)
+            case .failure(let error): self.alertError = AlertError("alerts.apierror", error.localizedDescription)
             }
         }
         
         session.api.getResumable { (result) in
             switch result {
             case .success(let items): self.resumableItems = items
-            case .failure(let error): print(error)
+            case .failure(let error): self.alertError = AlertError("alerts.apierror", error.localizedDescription)
             }
         }
         
         session.api.getFavorites { (result) in
             switch result {
             case .success(let items): self.favoriteItems = items
-            case .failure(let error): print(error)
+            case .failure(let error): self.alertError = AlertError("alerts.apierror", error.localizedDescription)
             }
         }
         

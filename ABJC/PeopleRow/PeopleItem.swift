@@ -42,7 +42,8 @@ struct PeopleItem: View {
                     image
                         .renderingMode(.original)
                         .resizable()
-                        .aspectRatio(1, contentMode: .fill)
+                        .aspectRatio(contentMode: .fill)
+                        .frame(alignment: .top)
             }
             .clipShape(Circle())
             .clipped()
