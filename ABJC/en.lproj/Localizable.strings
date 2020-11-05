@@ -7,6 +7,7 @@
 */
 
 // General Buttons
+"buttons.ok" = "ok";
 "buttons.continue" = "continue";
 "buttons.signin" = "sign in";
 "buttons.logout" = "logout";
@@ -62,3 +63,5 @@
 "itemdetail.recommended.label" = "Recommended";
 "itemdetail.episode.item" = "Episode";
 
+// Alerts
+"alerts.apierror" = "API Error";

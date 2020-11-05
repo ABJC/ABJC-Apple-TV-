@@ -7,6 +7,7 @@
 */
 
 // General Buttons
+"buttons.ok" = "ok";
 "buttons.continue" = "weiter";
 "buttons.signin" = "anmelden";
 "buttons.logout" = "abmelden";
@@ -60,3 +61,7 @@
 // ItemDetailView
 "itemdetail.recommended.label" = "Empfohlen";
 "itemdetail.episode.item" = "Episode";
+
+
+// Alerts
+"alerts.apierror" = "API Fehler";

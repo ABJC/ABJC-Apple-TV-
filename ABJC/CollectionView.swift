@@ -48,7 +48,8 @@ struct CollectionView: View {
             case .success(let items):
                 session.updateItems(items)
                 self.items = items
-            case .failure(let error): self.alertError = AlertError("alerts.apierror", error.localizedDescription)
+            case .failure(let error):
+                self.alertError = AlertError("alerts.apierror", error.localizedDescription)
             }
         }
     }

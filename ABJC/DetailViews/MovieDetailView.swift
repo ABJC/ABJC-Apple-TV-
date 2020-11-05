@@ -11,7 +11,7 @@ import URLImage
 
 struct MovieDetailView: View {
     @EnvironmentObject var session: SessionStore
-    @EnvironmentObject var player: PlayerStore
+    @EnvironmentObject var playerStore: PlayerStore
     
     private let item: API.Models.Item
     private let geo: GeometryProxy
@@ -54,7 +54,7 @@ struct MovieDetailView: View {
             peopleView
             recommendedView
         }
-        .fullScreenCover(item: $player.playItem, onDismiss: {
+        .fullScreenCover(item: $playerStore.playItem, onDismiss: {
             print("PLAYER DISMISSED")
         }) {_ in
             PlayerView()
@@ -75,7 +75,7 @@ struct MovieDetailView: View {
                 }
                 Spacer()
                 Button(action: {
-                    player.play(item)
+                    playerStore.play(item)
                 }) {
                     Text("buttons.play")
                         .bold()

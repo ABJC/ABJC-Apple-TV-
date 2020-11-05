@@ -12,6 +12,9 @@ import JellyKit
 
 class PlayerStore: ObservableObject {
     @Published public var playItem: PlayItem? = nil
+    @Published public var api: API? = nil
+    
+    private var timer: Timer? = nil
     
     public func play(_ episode: API.Models.Episode) {
         print("PLAYING", episode.name, episode.index ?? 0, episode.id)
@@ -24,6 +27,13 @@ class PlayerStore: ObservableObject {
     
     public func play(_ season: API.Models.Season) {
 //        self.playItem = PlayItem(season)
+    }
+    
+    public func startedPlayback() {
+        print("STARTED PLAYBACK")
+        self.timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false) { timer in
+            print("Timer fired!")
+        }
     }
     
 }

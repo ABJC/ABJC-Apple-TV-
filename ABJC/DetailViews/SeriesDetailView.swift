@@ -11,7 +11,7 @@ import URLImage
 
 struct SeriesDetailView: View {
     @EnvironmentObject var session: SessionStore
-    @EnvironmentObject var player: PlayerStore
+    @EnvironmentObject var playerStore: PlayerStore
     
     private let item: API.Models.Item
     private let geo: GeometryProxy
@@ -77,7 +77,7 @@ struct SeriesDetailView: View {
             peopleView
             recommendedView
         }
-        .fullScreenCover(item: $player.playItem, onDismiss: {
+        .fullScreenCover(item: $playerStore.playItem, onDismiss: {
             print("PLAYER DISMISSED")
         }) {_ in 
             PlayerView()
@@ -119,7 +119,7 @@ struct SeriesDetailView: View {
                 Spacer()
                 Button(action: {
                     if selectedEpisode != nil {
-                        player.play(selectedEpisode!)
+                        playerStore.play(selectedEpisode!)
                     }
                 }) {
                     HStack {

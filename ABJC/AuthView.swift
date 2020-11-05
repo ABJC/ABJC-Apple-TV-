@@ -9,6 +9,7 @@ import SwiftUI
 import JellyKit
 struct AuthView: View {
     @EnvironmentObject var session: SessionStore
+    @EnvironmentObject var playerStore: PlayerStore
     
     @State var progress: Bool = false
     @State var serverSelection: Bool = true
@@ -35,6 +36,7 @@ struct AuthView: View {
                                                              name: authResponse.user.name,
                                                              serverID: authResponse.serverId,
                                                              token: authResponse.token)
+                            self.playerStore.api = self.session.api
                         }
                     case .failure(let error):
                         print(error)
@@ -127,6 +129,7 @@ struct AuthView: View {
     
     struct AccountCredentialView: View {
         @EnvironmentObject var session: SessionStore
+        @EnvironmentObject var playerStore: PlayerStore
         
         private let host: String
         private let port: Int
@@ -187,6 +190,7 @@ struct AuthView: View {
                                                          name: authResponse.user.name,
                                                          serverID: authResponse.serverId,
                                                          token: authResponse.token)
+                        self.playerStore.api = self.session.api
                     }
                 case .failure(let error):
                     print(error)

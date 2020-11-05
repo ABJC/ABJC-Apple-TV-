@@ -11,7 +11,7 @@ import AVKit
 
 struct MainViewContainer: View {
     @EnvironmentObject var session: SessionStore
-    @EnvironmentObject var player: PlayerStore
+    @EnvironmentObject var playerStore: PlayerStore
     
     @State var alertError: AlertError? = nil
     
