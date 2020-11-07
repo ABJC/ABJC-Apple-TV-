@@ -47,8 +47,8 @@ struct SeriesDetailView: View {
         session.api.getSeasons(for: self.item.id) { result in
             switch result {
             case .success(let items):
-                self.seasons = items.sorted(by: {$0.index < $1.index})
-                self.selectedSeason = 0
+                self.seasons = items.sorted(by: {$0.index == 0 || $0.index < $1.index})
+                self.selectedSeason = self.seasons.isEmpty ? nil : self.seasons.startIndex
             case .failure(let error): print(error)
             }
         }
@@ -57,7 +57,12 @@ struct SeriesDetailView: View {
             case .success(let items):
                 self.episodes = items.sorted(by: {$0.parentIndex <= $1.parentIndex && $0.index ?? 0 <= $1.index ?? 0})
                 self.selectedEpisode = episodes.first(where: {$0.userData.played != true})
-                self.selectedSeason = seasons.firstIndex(of: seasons.first(where: {$0.index == selectedEpisode!.parentIndex})!) ?? 0
+                if selectedEpisode != nil {
+                    if let currentSeason = seasons.first(where: {$0.index == selectedEpisode!.parentIndex}) {
+                        
+                        self.selectedSeason = seasons.firstIndex(of: currentSeason)
+                    }
+                }
             case .failure(let error): print(error)
             }
         }
@@ -181,18 +186,21 @@ struct SeriesDetailView: View {
                     }
                         
                         
-                    ForEach(episodes.filter({$0.parentIndex == seasons[selectedSeason!].index}), id:\.id) { item in
-                        VStack {
-                            Button(action: {
-                                self.selectedEpisode = item
-                            }) {
-                                EpisodeItem(item)
-                            }
-                            .buttonStyle(PlainButtonStyle())
-                            Text("Episode \(item.index ?? 0)")
-                                .font(.callout).foregroundColor(.secondary)
-                            Text(item.name).bold()
-                                .padding(.bottom, 5)
+                    if selectedSeason != nil {
+                        ForEach(episodes.filter({$0.parentIndex == seasons[selectedSeason!].index}), id:\.id) { item in
+                            VStack {
+                                Button(action: {
+                                    self.selectedEpisode = item
+                                }) {
+                                    EpisodeItem(item)
+                                }
+                                .buttonStyle(PlainButtonStyle())
+                                Text("Episode \(item.index ?? 0)")
+                                    .font(.callout).foregroundColor(.secondary)
+                                Text(item.name).bold()
+                                    .padding(.bottom, 5)
+                                    .frame(width: 548)
+                            }.padding(.vertical)
                         }
                     }
                     
@@ -209,9 +217,10 @@ struct SeriesDetailView: View {
                         .padding(.trailing, 80)
                     }
                 }
+                .frame(minHeight: 548*9/16)
                 .padding(.leading, 80)
-                .padding(.bottom, 60)
-                .padding(.top, 20)
+                .padding(.bottom, 50)
+                .padding(.top, 40)
             }
         }
     }

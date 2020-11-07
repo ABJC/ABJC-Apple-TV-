@@ -46,7 +46,7 @@ public class SessionStore: ObservableObject {
         self.user = nil
     }
     
-    public func setServer(_ host: String, _ port: Int) -> API {
+    public func setServer(_ host: String, _ port: Int, _ deviceId: String) -> API {
         DispatchQueue.main.async {
             self.host = host
             self.port = port
@@ -54,7 +54,7 @@ public class SessionStore: ObservableObject {
         if hasUser {
             self.api = API(host, port, user)
         } else {
-            self.api = API(host, port)
+            self.api = API(host, port, nil, deviceId)
         }
         return self.api
     }

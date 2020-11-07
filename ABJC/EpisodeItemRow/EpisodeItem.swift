@@ -24,34 +24,37 @@ public struct EpisodeItem: View {
     }
     
     public var body: some View {
-        URLImage(
-            url: session.api.getImageURL(for: item.id, .thumb),
-            options: URLImageOptions(
-                identifier: item.id+"Thumb",
-                expireAfter: .infinity,
-                cachePolicy: .returnCacheReload(cacheDelay: 0.1, downloadDelay: 0.25)
-            ),
-            empty: { self.placeholder },
-            inProgress: { progress in
-                Group {
-                    if let progress = progress {
-                        Image(uiImage: UIImage(blurHash: self.item.blurHash(for: .backdrop) ?? self.item.blurHash(for: .primary) ?? "", size: CGSize(width: 32, height: 32)) ?? UIImage())
-                            .renderingMode(.original)
-                            .resizable()
+        ZStack {
+            Blur().clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
+            URLImage(
+                url: session.api.getImageURL(for: item.id, .thumb),
+                options: URLImageOptions(
+                    identifier: item.id+"Thumb",
+                    expireAfter: .infinity,
+                    cachePolicy: .returnCacheElseLoad(cacheDelay: 0, downloadDelay: 0.25)
+                ),
+                empty: { self.placeholder },
+                inProgress: { progress in
+                    Group {
+                        if progress != nil {
+                            Image(uiImage: UIImage(blurHash: self.item.blurHash(for: .backdrop) ?? self.item.blurHash(for: .primary) ?? "", size: CGSize(width: 32, height: 32)) ?? UIImage())
+                                .renderingMode(.original)
+                                .resizable()
+                        }
+                        else {
+                            Image(uiImage: UIImage(blurHash: self.item.blurHash(for: .backdrop) ?? self.item.blurHash(for: .primary) ?? "", size: CGSize(width: 32, height: 32)) ?? UIImage())
+                                .renderingMode(.original)
+                                .resizable()
+                        }
                     }
-                    else {
-                        Image(uiImage: UIImage(blurHash: self.item.blurHash(for: .backdrop) ?? self.item.blurHash(for: .primary) ?? "", size: CGSize(width: 32, height: 32)) ?? UIImage())
-                            .renderingMode(.original)
-                            .resizable()
-                    }
-                }
-            },
-            failure:  { _,_ in self.placeholder }
-        ) { image in
-                image
-                    .renderingMode(.original)
-                    .resizable()
-                    .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
+                },
+                failure:  { _,_ in self.placeholder }
+            ) { image in
+                    image
+                        .renderingMode(.original)
+                        .resizable()
+                        .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
+            }
         }
         .aspectRatio(16/9, contentMode: .fill)
         .clipped()

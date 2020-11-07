@@ -24,7 +24,7 @@ struct PeopleItem: View {
                 options: URLImageOptions(
                     identifier: person.id+"Primary",
                     expireAfter: .infinity,
-                    cachePolicy: .returnCacheReload(cacheDelay: 0.25, downloadDelay: 0.25)
+                    cachePolicy: .returnCacheElseLoad(cacheDelay: 0, downloadDelay: 0.25)
                 ),
                 empty: { Circle() },
                 inProgress: { progress in

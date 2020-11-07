@@ -22,6 +22,8 @@
 		FD68BE2A254C332E0098549A /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD68BE29254C332E0098549A /* SearchView.swift */; };
 		FD68BE38254C3EAE0098549A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FD68BE3A254C3EAE0098549A /* Localizable.strings */; };
 		FD68BE47254C412D0098549A /* TVServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD68BE46254C412D0098549A /* TVServices.framework */; };
+		FD91FF0325546A9500548E91 /* URLImage in Frameworks */ = {isa = PBXBuildFile; productRef = FD91FF0225546A9500548E91 /* URLImage */; };
+		FD91FF0825546DB500548E91 /* Blur.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD91FF0725546DB500548E91 /* Blur.swift */; };
 		FDB916CE254837FA00C8BFD9 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDB916CD254837FA00C8BFD9 /* Extensions.swift */; };
 		FDB916DC254853E800C8BFD9 /* ItemDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDB916DB254853E800C8BFD9 /* ItemDetailView.swift */; };
 		FDB916E12548D89E00C8BFD9 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDB916E02548D89E00C8BFD9 /* Player.swift */; };
@@ -34,7 +36,6 @@
 		FDB917A0254A0BF800C8BFD9 /* BlurHash.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDB9179F254A0BF800C8BFD9 /* BlurHash.swift */; };
 		FDB917A5254A0F4A00C8BFD9 /* FocusedValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDB917A4254A0F4A00C8BFD9 /* FocusedValues.swift */; };
 		FDB917CE254A212800C8BFD9 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDB917CD254A212800C8BFD9 /* TestView.swift */; };
-		FDB917DC254AE25200C8BFD9 /* URLImage in Frameworks */ = {isa = PBXBuildFile; productRef = FDB917DB254AE25200C8BFD9 /* URLImage */; };
 		FDBDC986254DAB8E000C75DF /* PlayerStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDBDC985254DAB8E000C75DF /* PlayerStore.swift */; };
 		FDC2E8F4254C8258003BCFF1 /* JellyKit in Frameworks */ = {isa = PBXBuildFile; productRef = FDC2E8F3254C8258003BCFF1 /* JellyKit */; };
 		FDC8ECBB254D808700F3F71C /* MovieDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC8ECBA254D808700F3F71C /* MovieDetailView.swift */; };
@@ -86,6 +87,7 @@
 		FD68BE3E254C3EB20098549A /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FD68BE45254C412D0098549A /* ABJC (ATV).entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "ABJC (ATV).entitlements"; sourceTree = "<group>"; };
 		FD68BE46254C412D0098549A /* TVServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TVServices.framework; path = System/Library/Frameworks/TVServices.framework; sourceTree = SDKROOT; };
+		FD91FF0725546DB500548E91 /* Blur.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Blur.swift; sourceTree = "<group>"; };
 		FDB916CD254837FA00C8BFD9 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		FDB916DB254853E800C8BFD9 /* ItemDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailView.swift; sourceTree = "<group>"; };
 		FDB916E02548D89E00C8BFD9 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
@@ -111,8 +113,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FDB917DC254AE25200C8BFD9 /* URLImage in Frameworks */,
 				FDC2E8F4254C8258003BCFF1 /* JellyKit in Frameworks */,
+				FD91FF0325546A9500548E91 /* URLImage in Frameworks */,
 				FD68BE47254C412D0098549A /* TVServices.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -169,14 +171,15 @@
 				FD68BE10254C27DE0098549A /* PreferencesView.swift */,
 				FD68BE29254C332E0098549A /* SearchView.swift */,
 				FDC8ECD8254D8EE800F3F71C /* DetailViews */,
-				FDC8ECD4254D8EE100F3F71C /* EpisodeItemRow */,
 				FD68BE22254C2DB70098549A /* PreferencesViews */,
 				FDB917E1254AE2C900C8BFD9 /* MediaItemRow */,
 				FDB917E0254AE2C000C8BFD9 /* PeopleRow */,
+				FDC8ECD4254D8EE100F3F71C /* EpisodeItemRow */,
 				FDB916E02548D89E00C8BFD9 /* Player.swift */,
 				FDD5AEC82552CE83009C5A36 /* AlertError.swift */,
 				FDBDC985254DAB8E000C75DF /* PlayerStore.swift */,
 				FDB9179F254A0BF800C8BFD9 /* BlurHash.swift */,
+				FD91FF0725546DB500548E91 /* Blur.swift */,
 				FDB917A4254A0F4A00C8BFD9 /* FocusedValues.swift */,
 				FDB916CD254837FA00C8BFD9 /* Extensions.swift */,
 				FD3DF762254835DE00E891E2 /* SessionStore.swift */,
@@ -285,8 +288,8 @@
 			);
 			name = ABJC;
 			packageProductDependencies = (
-				FDB917DB254AE25200C8BFD9 /* URLImage */,
 				FDC2E8F3254C8258003BCFF1 /* JellyKit */,
+				FD91FF0225546A9500548E91 /* URLImage */,
 			);
 			productName = ABJC;
 			productReference = FD3DF71B254834F700E891E2 /* ABJC.app */;
@@ -361,6 +364,7 @@
 			);
 			mainGroup = FD3DF712254834F700E891E2;
 			packageReferences = (
+				FD91FF0125546A9500548E91 /* XCRemoteSwiftPackageReference "url-image" */,
 			);
 			productRefGroup = FD3DF71C254834F700E891E2 /* Products */;
 			projectDirPath = "";
@@ -412,6 +416,7 @@
 				FDB916CE254837FA00C8BFD9 /* Extensions.swift in Sources */,
 				FDB916DC254853E800C8BFD9 /* ItemDetailView.swift in Sources */,
 				FDC8ECC0254D8A5400F3F71C /* SeriesDetailView.swift in Sources */,
+				FD91FF0825546DB500548E91 /* Blur.swift in Sources */,
 				FDB917872549BBC000C8BFD9 /* AuthView.swift in Sources */,
 				FDB917822549B2EC00C8BFD9 /* PeopleItem.swift in Sources */,
 				FDC8ECBB254D808700F3F71C /* MovieDetailView.swift in Sources */,
@@ -785,9 +790,21 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCRemoteSwiftPackageReference section */
+		FD91FF0125546A9500548E91 /* XCRemoteSwiftPackageReference "url-image" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/dmytro-anokhin/url-image";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.1.4;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
-		FDB917DB254AE25200C8BFD9 /* URLImage */ = {
+		FD91FF0225546A9500548E91 /* URLImage */ = {
 			isa = XCSwiftPackageProductDependency;
+			package = FD91FF0125546A9500548E91 /* XCRemoteSwiftPackageReference "url-image" */;
 			productName = URLImage;
 		};
 		FDC2E8F3254C8258003BCFF1 /* JellyKit */ = {

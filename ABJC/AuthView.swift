@@ -27,7 +27,7 @@ struct AuthView: View {
     func authorize() {
         if let data = KeyChain.load(key: "credentials") {
             if let credentials = try? JSONDecoder().decode(ServerLocator.ServerCredential.self, from: data) {
-                let api = session.setServer(credentials.host, credentials.port)
+                let api = session.setServer(credentials.host, credentials.port, credentials.deviceId)
                 api.authorize(credentials.username, credentials.password) { (result) in
                     switch result {
                     case .success(let authResponse):
@@ -35,6 +35,7 @@ struct AuthView: View {
                             self.session.user = API.AuthUser(id: authResponse.user.id,
                                                              name: authResponse.user.name,
                                                              serverID: authResponse.serverId,
+                                                             deviceID: credentials.deviceId,
                                                              token: authResponse.token)
                             self.playerStore.api = self.session.api
                         }
@@ -59,53 +60,38 @@ struct AuthView: View {
         @State var port: String = "8096"
         
         @State var discoveredServers: [ServerLocator.ServerLookupResponse] = []
-        
-        @State var showManualEntry: Bool = false
 
         var body: some View {
             VStack {
                 Spacer()
-                if !self.showManualEntry {
-                    ScrollView([.horizontal]) {
-                        LazyHStack(alignment: .center) {
-                            Button(action: { self.showManualEntry.toggle() }) {
+                ScrollView([.horizontal]) {
+                    LazyHStack(alignment: .center) {
+                        NavigationLink(destination: ManualServerEntry()) {
+                            VStack {
+                                Text("auth.serverselection.manual.label")
+                                    .bold()
+                                    .font(.headline)
+                                    .textCase(.uppercase)
+                                Text("auth.serverselection.manual.descr")
+                                    .font(.callout)
+                                    .foregroundColor(.secondary)
+                            }
+                        }
+                        ForEach(self.discoveredServers, id:\.id) { server in
+                            NavigationLink(destination: AccountCredentialView(server.host, server.port)) {
                                 VStack {
-                                    Text("auth.serverselection.manual.label")
+                                    Text(server.name)
                                         .bold()
                                         .font(.headline)
                                         .textCase(.uppercase)
-                                    Text("auth.serverselection.manual.descr")
-                                        .font(.callout)
+                                    Text("\(server.host):\(String(server.port))")
+                                        .font(.system(.callout, design: .monospaced))
                                         .foregroundColor(.secondary)
                                 }
                             }
-                            ForEach(self.discoveredServers, id:\.id) { server in
-                                NavigationLink(destination: AccountCredentialView(server.host, server.port)) {
-                                    VStack {
-                                        Text(server.name)
-                                            .bold()
-                                            .font(.headline)
-                                            .textCase(.uppercase)
-                                        Text("\(server.host):\(String(server.port))")
-                                            .font(.system(.callout, design: .monospaced))
-                                            .foregroundColor(.secondary)
-                                    }
-                                }
-                            }
                         }
-                    }.onAppear(perform: discover)
-                } else {
-                    Group() {
-                        TextField("auth.serverselection.host.label", text: self.$host)
-                        TextField("auth.serverselection.port.label", text: self.$port)
-                            .textContentType(.oneTimeCode)
-                            .keyboardType(.numberPad)
-                    }.frame(width: 400)
-                    Button(action: { self.showManualEntry.toggle() }) {
-                        Text("buttons.continue").textCase(.uppercase)
                     }
-                }
-                
+                }.onAppear(perform: discover)
                 Spacer()
             }
             .navigationTitle("auth.serverselection.title")
@@ -117,12 +103,23 @@ struct AuthView: View {
                     if !discoveredServers.contains(server!) {
                         discoveredServers.append(server!)
                     }
-                    if  !(discoveredServers.count >= 0) {
-                        showManualEntry = true
-                    }
-                } else {
-                    showManualEntry = true
                 }
+            }
+        }
+    }
+    
+    struct ManualServerEntry: View {
+        @State var host: String = ""
+        @State var port: String = "8096"
+        var body: some View {
+            Group() {
+                TextField("auth.serverselection.host.label", text: self.$host)
+                TextField("auth.serverselection.port.label", text: self.$port)
+                    .textContentType(.oneTimeCode)
+                    .keyboardType(.numberPad)
+            }.frame(width: 400)
+            NavigationLink(destination: AccountCredentialView(self.host, Int(self.port) ?? 8096)) {
+                Text("buttons.continue").textCase(.uppercase)
             }
         }
     }
@@ -169,7 +166,7 @@ struct AuthView: View {
                 .navigationTitle("auth.credentials.title")
             }
             .onAppear() {
-                _ = session.setServer(self.host, self.port)
+                _ = session.setServer(self.host, self.port, UUID().uuidString)
             }
         }
         
@@ -189,6 +186,7 @@ struct AuthView: View {
                         self.session.user = API.AuthUser(id: authResponse.user.id,
                                                          name: authResponse.user.name,
                                                          serverID: authResponse.serverId,
+                                                         deviceID: credentials.deviceId,
                                                          token: authResponse.token)
                         self.playerStore.api = self.session.api
                     }

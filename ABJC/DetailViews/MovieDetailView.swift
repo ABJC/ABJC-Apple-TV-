@@ -75,7 +75,9 @@ struct MovieDetailView: View {
                 }
                 Spacer()
                 Button(action: {
-                    playerStore.play(item)
+                    if let item = self.detailItem {
+                        playerStore.play(item)
+                    }
                 }) {
                     Text("buttons.play")
                         .bold()
@@ -83,7 +85,7 @@ struct MovieDetailView: View {
                         .frame(width: 300)
                 }.foregroundColor(.accentColor)
                 .padding(.trailing)
-            }
+            }.disabled(detailItem == nil)
             if item.overview != nil {
                 Divider()
                 HStack() {

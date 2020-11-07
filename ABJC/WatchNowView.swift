@@ -27,8 +27,10 @@ struct WatchNowView: View {
                     MediaItemRow("watchnow.continueWatching", self.resumableItems)
                     Divider()
                     MediaItemRow("watchnow.favorites", self.favoriteItems)
-                    Divider()
-                    MediaItemRow("watchnow.latestMovies", self.latestItems.filter({$0.type == .movie}))
+                    if self.latestItems.count > 0 {
+                        Divider()
+                        MediaItemRow("watchnow.latestMovies", self.latestItems.filter({$0.type == .movie}))
+                    }
                     Divider()
                     MediaItemRow("watchnow.latestShows", self.latestItems.filter({$0.type == .series}))
                 }
@@ -41,7 +43,9 @@ struct WatchNowView: View {
         session.api.getLatest() { (result) in
             switch result {
             case .success(let items): self.latestItems = items
-            case .failure(let error): self.alertError = AlertError("alerts.apierror", error.localizedDescription)
+            case .failure(let error):
+                print(error)
+                self.alertError = AlertError("alerts.apierror", error.localizedDescription)
             }
         }
         

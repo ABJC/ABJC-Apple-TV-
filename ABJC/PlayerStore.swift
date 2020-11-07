@@ -13,6 +13,8 @@ import JellyKit
 class PlayerStore: ObservableObject {
     @Published public var playItem: PlayItem? = nil
     @Published public var api: API? = nil
+    public var statusObserver: NSKeyValueObservation? = nil
+    public var errorObserver: NSKeyValueObservation? = nil
     
     private var timer: Timer? = nil
     
@@ -21,31 +23,45 @@ class PlayerStore: ObservableObject {
         self.playItem = PlayItem(episode)
     }
     
-    public func play(_ item: API.Models.Item) {
-        self.playItem = PlayItem(item)
+    public func play(_ movie: API.Models.Movie) {
+        self.playItem = PlayItem(movie)
     }
     
-    public func play(_ season: API.Models.Season) {
+//    public func play(_ season: API.Models.Season) {
 //        self.playItem = PlayItem(season)
+//    }
+    
+    public func startedPlayback(_ player: AVPlayer?) {
+//        print("STARTED PLAYBACK")
+        self.api?.startPlayback(for: self.playItem!.id, at: 0)
     }
     
-    public func startedPlayback() {
-        print("STARTED PLAYBACK")
-        self.timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false) { timer in
-            print("Timer fired!")
+    public func reportPlayback(_ player: AVPlayer?, _ pos: Double) {
+        self.api?.reportPlayback(for: self.playItem!.id, positionTicks: Int(pos*1000000))
+    }
+    
+    public func stoppedPlayback(_ player: AVPlayer?) {
+//        print("STOPPED PLAYBACK")
+        if let playbackPosition = player?.currentTime().seconds {
+            let posTicks = Int(playbackPosition * 1000000)
+            print(playbackPosition, posTicks)
+            self.api?.stopPlayback(for: playItem!.id, positionTicks: posTicks)
+        } else {
+            print("ERROR", player)
         }
     }
-    
 }
 
 
 extension PlayerStore {
     class PlayItem: Identifiable {
         public let id: String
+        public let sourceId: String
         private let userData: API.Models.UserData
         
         public init(_ item: Playable) {
             self.id = item.id
+            self.sourceId = item.mediaSources.first?.id ?? ""
             self.userData = item.userData
         }
     }

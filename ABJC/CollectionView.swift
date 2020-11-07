@@ -31,10 +31,11 @@ struct CollectionView: View {
         NavigationView {
             ScrollView([.vertical]) {
                 LazyVStack(alignment: .leading) {
-                    ForEach(self.genres, id:\.id) { genre in
+                    let extractedExpr = ForEach(self.genres, id:\.id) { genre in
                         MediaItemRow(genre.name, self.items.filter({ $0.genres.contains(genre) }))
                         Divider()
                     }
+                    extractedExpr
                 }
             }.edgesIgnoringSafeArea(.horizontal)
             .onAppear(perform: load)

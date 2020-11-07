@@ -49,6 +49,7 @@ public struct EpisodeItemRow: View {
                                 .foregroundColor(.secondary)
                             Text(item.name)
                                 .bold()
+                                .frame(width: 548)
                         }
                     }
                 }

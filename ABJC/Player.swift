@@ -13,20 +13,53 @@ struct PlayerView: View {
     @EnvironmentObject var session: SessionStore
     @EnvironmentObject var playerStore: PlayerStore
     
-    @State var player: AVPlayer = AVPlayer()
+    @State var player: AVPlayer!
+    @State var playerReady: Bool = false
+    @State var alertError: AlertError? = nil
+    @State var reportCounter = 0
     
     var body: some View {
         ZStack {
             Color.green
             .onAppear(perform: initPlayback)
-            PlayerViewController(player: self.$player)
-        }.edgesIgnoringSafeArea(.all)
+//            PlayerViewController(player: self.$player)
+            if playerReady {
+                VideoPlayer(player: self.player)
+            }
+        }
+//        .onDisappear(perform: {self.playerStore.stoppedPlayback(self.player)})
+        .edgesIgnoringSafeArea(.all)
+        .alert(item: self.$alertError) { (alertError) -> Alert in
+            Alert(title: Text(alertError.title), message: Text(alertError.description), dismissButton: .default(Text("buttons.ok")))
+        }
     }
     
     func initPlayback() {
-        let url = session.api.getStreamURL(for: playerStore.playItem!.id)
-        let playerItem = AVPlayerItem(url: url)
-        self.player.replaceCurrentItem(with: playerItem)
+        let asset = session.api.getPlayerItem(for: playerStore.playItem!.id, playerStore.playItem!.sourceId)
+        self.player = AVPlayer(playerItem: AVPlayerItem(asset: asset))
+        
+        _ = self.player.observe(\.currentItem?.status) { (player, value) in
+            if value.newValue == .failed {
+                self.alertError = AlertError("alerts.playbackerror", "alerts.playbackerror.descr")
+            }
+        }
+        
+        self.player.addPeriodicTimeObserver(forInterval: CMTime(seconds: 10.0, preferredTimescale: 1), queue: .main) { (time) in
+            self.playerStore.reportPlayback(player, time.seconds)
+        }
+        
+        self.player.addPeriodicTimeObserver(forInterval: CMTime(seconds: 10, preferredTimescale: 1), queue: .main) { time in
+            if reportCounter < 10 {
+                self.reportCounter += 1
+            } else {
+                reportCounter = 0
+                self.playerStore.reportPlayback(player, time.seconds*10)
+            }
+        }
+        
+        player.play()
+        self.playerStore.startedPlayback(player)
+        self.playerReady = true
     }
     
     func reportProgress() {
@@ -38,7 +71,7 @@ struct PlayerViewController: UIViewControllerRepresentable {
     @EnvironmentObject var session: SessionStore
     @EnvironmentObject var playerStore: PlayerStore
     @Binding var player: AVPlayer
-    
+
     func makeUIViewController(context: UIViewControllerRepresentableContext<PlayerViewController>) -> AVPlayerViewController {
         let controller = AVPlayerViewController()
         return controller
@@ -51,7 +84,7 @@ struct PlayerViewController: UIViewControllerRepresentable {
             try? AVAudioSession.sharedInstance().setActive(true, options: [.notifyOthersOnDeactivation])
             vc.player?.play()
             vc.showsPlaybackControls = true
-            self.playerStore.startedPlayback()
+            self.playerStore.startedPlayback(vc.player)
         }
     }
 }

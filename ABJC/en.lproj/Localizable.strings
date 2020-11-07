@@ -65,3 +65,5 @@
 
 // Alerts
 "alerts.apierror" = "API Error";
+"alerts.playbackerror" = "Playback Error";
+"alerts.playbackerror.descr" = "Could not play the requested item";
