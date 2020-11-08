@@ -51,11 +51,12 @@ public class SessionStore: ObservableObject {
             self.host = host
             self.port = port
         }
-        if hasUser {
-            self.api = API(host, port, user)
+        if self.hasUser {
+            self.api = API(self.host, self.port, self.user)
         } else {
             self.api = API(host, port, nil, deviceId)
         }
+        print(self.api.host, self.api.port)
         return self.api
     }
 }

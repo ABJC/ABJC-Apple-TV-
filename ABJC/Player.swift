@@ -13,6 +13,7 @@ struct PlayerView: View {
     @EnvironmentObject var session: SessionStore
     @EnvironmentObject var playerStore: PlayerStore
     
+    @State var playItem: PlayerStore.PlayItem!
     @State var player: AVPlayer!
     @State var playerReady: Bool = false
     @State var alertError: AlertError? = nil
@@ -22,12 +23,11 @@ struct PlayerView: View {
         ZStack {
             Color.green
             .onAppear(perform: initPlayback)
-//            PlayerViewController(player: self.$player)
             if playerReady {
                 VideoPlayer(player: self.player)
             }
         }
-//        .onDisappear(perform: {self.playerStore.stoppedPlayback(self.player)})
+        .onDisappear(perform: {self.playerStore.stoppedPlayback(playItem, player)})
         .edgesIgnoringSafeArea(.all)
         .alert(item: self.$alertError) { (alertError) -> Alert in
             Alert(title: Text(alertError.title), message: Text(alertError.description), dismissButton: .default(Text("buttons.ok")))
@@ -37,6 +37,8 @@ struct PlayerView: View {
     func initPlayback() {
         let asset = session.api.getPlayerItem(for: playerStore.playItem!.id, playerStore.playItem!.sourceId)
         self.player = AVPlayer(playerItem: AVPlayerItem(asset: asset))
+        
+        self.playItem = playerStore.playItem
         
         _ = self.player.observe(\.currentItem?.status) { (player, value) in
             if value.newValue == .failed {

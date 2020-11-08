@@ -39,6 +39,7 @@ struct CollectionView: View {
                 }
             }.edgesIgnoringSafeArea(.horizontal)
             .onAppear(perform: load)
+            
         }.edgesIgnoringSafeArea(.all)
     }
     

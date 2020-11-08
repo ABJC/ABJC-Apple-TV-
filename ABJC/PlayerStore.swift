@@ -37,15 +37,15 @@ class PlayerStore: ObservableObject {
     }
     
     public func reportPlayback(_ player: AVPlayer?, _ pos: Double) {
-        self.api?.reportPlayback(for: self.playItem!.id, positionTicks: Int(pos*1000000))
+        if let item = playItem {
+            self.api?.reportPlayback(for: item.id, positionTicks: Int(pos*1000000))
+        }
     }
     
-    public func stoppedPlayback(_ player: AVPlayer?) {
-//        print("STOPPED PLAYBACK")
+    public func stoppedPlayback(_ item: PlayItem, _ player: AVPlayer?) {
         if let playbackPosition = player?.currentTime().seconds {
             let posTicks = Int(playbackPosition * 1000000)
-            print(playbackPosition, posTicks)
-            self.api?.stopPlayback(for: playItem!.id, positionTicks: posTicks)
+            self.api?.stopPlayback(for: item.id, positionTicks: posTicks)
         } else {
             print("ERROR", player)
         }

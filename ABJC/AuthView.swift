@@ -109,7 +109,7 @@ struct AuthView: View {
     }
     
     struct ManualServerEntry: View {
-        @State var host: String = ""
+        @State var host: String = "michaels.dynv6.net"
         @State var port: String = "8096"
         var body: some View {
             Group() {
@@ -131,7 +131,7 @@ struct AuthView: View {
         private let host: String
         private let port: Int
         
-        @State var username: String = ""
+        @State var username: String = "soeren"
         @State var password: String = ""
         
         @State var showingAlert: Bool = false
@@ -151,7 +151,7 @@ struct AuthView: View {
                         }
                         TextField("auth.credentials.username.label", text: self.$username)
                             .textContentType(.username)
-                        TextField("auth.credentials.password.label", text: self.$password)
+                        SecureField("auth.credentials.password.label", text: self.$password)
                             .textContentType(.password)
                     }.frame(width: 400)
                     
