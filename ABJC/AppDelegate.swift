@@ -9,8 +9,6 @@ import UIKit
 import CoreData
 import SwiftUI
 
-import URLImage
-
 import abjc_core
 
 
@@ -23,7 +21,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let playerStore: PlayerStore = PlayerStore()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        URLImageService.shared.cleanup()
 
         // Create the SwiftUI view and set the context as the value for the managedObjectContext environment keyPath.
         // Add `@Environment(\.managedObjectContext)` in the views that will need the context.

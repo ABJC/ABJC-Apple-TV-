@@ -40,7 +40,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="logo" width="128" height="128"/>
+        <image name="logo" width="466" height="466"/>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.043137254901960784" blue="0.14509803921568629" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>

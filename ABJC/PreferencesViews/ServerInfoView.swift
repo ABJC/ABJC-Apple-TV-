@@ -18,7 +18,7 @@ struct ServerInfoView: View {
         Group() {
             if let data = systemInfo {
                 Form() {
-                    Section(header: Label("pref.serverinfo.general.label", image: "externaldrive.connected.to.line.below")) {
+                    Section(header: Label("pref.serverinfo.general.label", systemImage: "externaldrive.connected.to.line.below")) {
                         HStack {
                             Text("pref.serverinfo.servername.label")
                             Spacer()

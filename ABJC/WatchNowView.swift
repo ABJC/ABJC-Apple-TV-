@@ -29,20 +29,20 @@ struct WatchNowView: View {
                     
                     /// Favorite Items
                     if !favoriteItems.isEmpty {
-                        Divider()
                         MediaItemRow("watchnow.favorites", self.favoriteItems)
+                        Divider()
                     }
                     
                     /// Latest Items
                     if !latestItems.isEmpty {
                         if !latestItems.filter({$0.type == .movie}).isEmpty {
-                            Divider()
                             MediaItemRow("watchnow.latestMovies", self.latestItems.filter({$0.type == .movie}))
+                            Divider()
                         }
                         
                         if !latestItems.filter({$0.type == .series}).isEmpty {
-                            Divider()
                             MediaItemRow("watchnow.latestShows", self.latestItems.filter({$0.type == .series}))
+                            Divider()
                         }
                     }
                 }

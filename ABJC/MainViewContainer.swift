@@ -18,21 +18,32 @@ struct MainViewContainer: View {
         Group() {
             if self.session.hasUser {
                 TabView() {
-                    WatchNowView()
-                        .tabItem({ Text("main.watchnow.tablabel") })
-                        .tag(0)
-                    CollectionView(.movie)
-                        .tabItem({ Text("main.movies.tablabel") })
-                        .tag(1)
-                    CollectionView(.series)
-                        .tabItem({ Text("main.shows.tablabel") })
-                        .tag(2)
-                    SearchView()
-                        .tabItem({
-                            Text("main.search.tablabel")
-                            Image(systemName: "magnifyingglass")
-                        })
-                        .tag(3)
+                    if session.preferences.showingWatchNowTab {
+                        WatchNowView()
+                            .tabItem({ Text("main.watchnow.tablabel") })
+                            .tag(0)
+                    }
+                    if session.preferences.showingMoviesTab {
+                        CollectionView(.movie)
+                            .tabItem({ Text("main.movies.tablabel") })
+                            .tag(1)
+                    }
+                    
+                    if session.preferences.showingSeriesTab {
+                        CollectionView(.series)
+                            .tabItem({ Text("main.shows.tablabel") })
+                            .tag(2)
+                    }
+                    
+                    if session.preferences.showingSearchTab {
+                        SearchView()
+                            .tabItem({
+                                Text("main.search.tablabel")
+                                Image(systemName: "magnifyingglass")
+                            })
+                            .tag(3)
+                    }
+                    
                     PreferencesView()
                         .tabItem({ Text("main.preferences.tablabel") })
                         .tag(4)

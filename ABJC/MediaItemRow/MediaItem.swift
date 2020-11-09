@@ -40,7 +40,7 @@ public struct MediaItem: View {
                 options: URLImageOptions(
                     identifier: item.id+"Backdrop",
                     expireAfter: .infinity,
-                    cachePolicy: .returnCacheElseLoad(cacheDelay: 0, downloadDelay: 0.25)
+                    cachePolicy: .returnCacheElseLoad(cacheDelay: 0.25, downloadDelay: 5.0)
                 ),
                 empty: { self.placeholder },
                 inProgress: { progress in

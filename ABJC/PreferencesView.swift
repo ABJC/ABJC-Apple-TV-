@@ -17,6 +17,15 @@ struct PreferencesView: View {
                 NavigationLink(destination: ServerInfoView()) {
                     Label("pref.serverinfo.label", systemImage: "server.rack")
                 }
+                
+                NavigationLink(destination: ClientPrefView()) {
+                    Label("pref.client.label", systemImage: "tv")
+                }
+                
+                NavigationLink(destination: DebugMenuView()) {
+                    Label("pref.debugmenu.label", systemImage: "exclamationmark.triangle.fill")
+                }
+                
                 Button(action: {
                     self.session.clear()
                 }) {
@@ -31,6 +40,7 @@ struct PreferencesView: View {
                     }
                 }
             }
+            ServerInfoView()
         }.navigationViewStyle(DoubleColumnNavigationViewStyle())
     }
 }
