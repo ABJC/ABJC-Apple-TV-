@@ -6,7 +6,9 @@
 //
 
 import SwiftUI
+import abjc_core
 import JellyKit
+
 struct AuthView: View {
     @EnvironmentObject var session: SessionStore
     @EnvironmentObject var playerStore: PlayerStore

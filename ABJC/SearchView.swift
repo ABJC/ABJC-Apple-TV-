@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import abjc_core
 import JellyKit
 
 struct SearchView: View {
@@ -74,7 +75,6 @@ struct SearchView: View {
         session.api.searchPeople(query) { result in
             switch result {
             case .success(let items): self.people = items
-                print(items.count)
             case .failure(let error): print(error)
             }
         }

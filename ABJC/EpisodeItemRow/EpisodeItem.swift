@@ -7,6 +7,7 @@
 
 import SwiftUI
 import URLImage
+import abjc_core
 import JellyKit
 
 public struct EpisodeItem: View {

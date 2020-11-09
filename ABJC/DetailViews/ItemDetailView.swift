@@ -6,12 +6,14 @@
 //
 
 import SwiftUI
+import abjc_core
 import JellyKit
 import URLImage
 
 
 struct ItemDetailView: View {
     @EnvironmentObject var session: SessionStore
+    
     private let item: API.Models.Item
     
     public init(_ item: API.Models.Item) {
@@ -25,7 +27,10 @@ struct ItemDetailView: View {
             } else if item.type == .series {
                 SeriesDetailView(item, geo)
             } else {
-                Text("ERROR")
+                ZStack {
+                    EmptyView()
+                    Text("ERROR")
+                }
             }
         }.edgesIgnoringSafeArea(.horizontal)
     }

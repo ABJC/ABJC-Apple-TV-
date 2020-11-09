@@ -47,7 +47,7 @@ class PlayerStore: ObservableObject {
             let posTicks = Int(playbackPosition * 1000000)
             self.api?.stopPlayback(for: item.id, positionTicks: posTicks)
         } else {
-            print("ERROR", player)
+            print("ERROR")
         }
     }
 }

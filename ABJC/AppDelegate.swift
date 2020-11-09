@@ -8,7 +8,12 @@
 import UIKit
 import CoreData
 import SwiftUI
+
 import URLImage
+
+import abjc_core
+
+
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {

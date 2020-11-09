@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import abjc_core
 import JellyKit
 import URLImage
 
@@ -24,25 +25,32 @@ struct MovieDetailView: View {
     @State var detailItem: API.Models.Movie?
     
     @State var images: [API.Models.Image] = []
-    @State var recommendations: [API.Models.Item] = []
+    @State var similarItems: [API.Models.Item] = []
     
+    
+    /// Loads Content From API
     func load() {
-        session.api.getImages(for: self.item.id) { result in
-            switch result {
-            case .success(let images): self.images = images
-            case .failure(let error): print(error)
-            }
-        }
-        session.api.getMovie(self.item.id) { result in
+        // Fetch Item Detail
+        session.api.getMovie(item.id) { result in
             switch result {
             case .success(let item): self.detailItem = item
-            case .failure(let error): print(error)
+            case .failure(let error): session.alert = AlertError("alerts.apierror", error.localizedDescription)
             }
         }
-        session.api.getSimilar(for: self.item.id) { result in
+        
+        // Fetch Images for Item
+        session.api.getImages(for: item.id) { result in
             switch result {
-            case .success(let items): self.recommendations = items
-            case .failure(let error): print(error)
+            case .success(let images): self.images = images
+            case .failure(let error): session.alert = AlertError("alerts.apierror", error.localizedDescription)
+            }
+        }
+        
+        // Fetch Similar Items
+        session.api.getSimilar(for: item.id) { result in
+            switch result {
+            case .success(let items): self.similarItems = items
+            case .failure(let error): session.alert = AlertError("alerts.apierror", error.localizedDescription)
             }
         }
     }
@@ -54,9 +62,7 @@ struct MovieDetailView: View {
             peopleView
             recommendedView
         }
-        .fullScreenCover(item: $playerStore.playItem, onDismiss: {
-            print("PLAYER DISMISSED")
-        }) {_ in
+        .fullScreenCover(item: $playerStore.playItem) {_ in
             PlayerView()
         }
         .onAppear(perform: load)
@@ -117,9 +123,9 @@ struct MovieDetailView: View {
     
     var recommendedView: some View {
         Group {
-            if self.recommendations.count != 0 {
+            if self.similarItems.count != 0 {
                 Divider().padding(.horizontal, 80)
-                MediaItemRow("itemdetail.recommended.label", self.recommendations)
+                MediaItemRow("itemdetail.recommended.label", self.similarItems)
             } else {
                 EmptyView()
             }

@@ -6,18 +6,18 @@
 //
 
 import SwiftUI
+import abjc_core
 import JellyKit
 import URLImage
 
+/// CollectionView for ItemType Collections
 struct CollectionView: View {
     @EnvironmentObject var session: SessionStore
-    @Binding var alertError: AlertError?
     
     private let type: API.Models.MediaType?
     
-    public init(_ type: API.Models.MediaType? = nil, _ alertError: Binding<AlertError?>) {
+    public init(_ type: API.Models.MediaType? = nil) {
         self.type = type
-        self._alertError = alertError
     }
     
     
@@ -31,27 +31,28 @@ struct CollectionView: View {
         NavigationView {
             ScrollView([.vertical]) {
                 LazyVStack(alignment: .leading) {
-                    let extractedExpr = ForEach(self.genres, id:\.id) { genre in
+                    ForEach(self.genres, id:\.id) { genre in
                         MediaItemRow(genre.name, self.items.filter({ $0.genres.contains(genre) }))
                         Divider()
                     }
-                    extractedExpr
                 }
             }.edgesIgnoringSafeArea(.horizontal)
-            .onAppear(perform: load)
-            
-        }.edgesIgnoringSafeArea(.all)
+        }
+        .edgesIgnoringSafeArea(.all)
+        .onAppear(perform: load)
     }
     
+    
+    /// Loads Content From API
     func load() {
-        self.items = session.items.filter({$0.type == self.type})
-        session.api.getItems(self.type) { result in
+        items = session.items.filter({$0.type == self.type})
+        session.api.getItems(type) { result in
             switch result {
-            case .success(let items):
-                session.updateItems(items)
-                self.items = items
-            case .failure(let error):
-                self.alertError = AlertError("alerts.apierror", error.localizedDescription)
+                case .success(let items):
+                    session.updateItems(items)
+                    self.items = items
+                case .failure(let error):
+                    session.alert = AlertError("alerts.apierror", error.localizedDescription)
             }
         }
     }
@@ -59,6 +60,7 @@ struct CollectionView: View {
 
 struct CollectionView_Previews: PreviewProvider {
     static var previews: some View {
-        CollectionView(.movie, .constant(nil))
+        CollectionView(.movie)
+        CollectionView(.series)
     }
 }

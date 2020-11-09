@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import abjc_core
 import JellyKit
 import URLImage
 
@@ -26,32 +27,32 @@ struct SeriesDetailView: View {
     @State var episodes: [API.Models.Episode] = []
     
     @State var images: [API.Models.Image] = []
-    @State var recommendations: [API.Models.Item] = []
+    @State var similarItems: [API.Models.Item] = []
     
     @State var selectedSeason: Int? = nil
     @State var selectedEpisode: API.Models.Episode? = nil
     
+    /// Loads Content From API
     func load() {
-        session.api.getImages(for: self.item.id) { result in
-            switch result {
-            case .success(let images): self.images = images
-            case .failure(let error): print(error)
-            }
-        }
+        // Fetch Item Detail
         session.api.getSeries(self.item.id) { result in
             switch result {
             case .success(let item): self.detailItem = item
-            case .failure(let error): print(error)
+            case .failure(let error): session.alert = AlertError("alerts.apierror", error.localizedDescription)
             }
         }
+        
+        // Fetch Seasons
         session.api.getSeasons(for: self.item.id) { result in
             switch result {
             case .success(let items):
                 self.seasons = items.sorted(by: {$0.index == 0 || $0.index < $1.index})
                 self.selectedSeason = self.seasons.isEmpty ? nil : self.seasons.startIndex
-            case .failure(let error): print(error)
+            case .failure(let error): session.alert = AlertError("alerts.apierror", error.localizedDescription)
             }
         }
+        
+        // Fetch Episodes
         session.api.getEpisodes(for: self.item.id) { result in
             switch result {
             case .success(let items):
@@ -59,17 +60,26 @@ struct SeriesDetailView: View {
                 self.selectedEpisode = episodes.first(where: {$0.userData.played != true})
                 if selectedEpisode != nil {
                     if let currentSeason = seasons.first(where: {$0.index == selectedEpisode!.parentIndex}) {
-                        
                         self.selectedSeason = seasons.firstIndex(of: currentSeason)
                     }
                 }
-            case .failure(let error): print(error)
+            case .failure(let error): session.alert = AlertError("alerts.apierror", error.localizedDescription)
             }
         }
+        
+        // Fetch Images for Item
+        session.api.getImages(for: self.item.id) { result in
+            switch result {
+            case .success(let images): self.images = images
+            case .failure(let error): session.alert = AlertError("alerts.apierror", error.localizedDescription)
+            }
+        }
+        
+        // Fetch Similar Items
         session.api.getSimilar(for: self.item.id) { result in
             switch result {
-            case .success(let items): self.recommendations = items
-            case .failure(let error): print(error)
+            case .success(let items): self.similarItems = items
+            case .failure(let error): session.alert = AlertError("alerts.apierror", error.localizedDescription)
             }
         }
     }
@@ -82,9 +92,7 @@ struct SeriesDetailView: View {
             peopleView
             recommendedView
         }
-        .fullScreenCover(item: $playerStore.playItem, onDismiss: {
-            print("PLAYER DISMISSED")
-        }) {_ in 
+        .fullScreenCover(item: $playerStore.playItem) {_ in
             PlayerView()
         }
         .onAppear(perform: load)
@@ -233,9 +241,9 @@ struct SeriesDetailView: View {
     
     var recommendedView: some View {
         Group {
-            if self.recommendations.count != 0 {
+            if self.similarItems.count != 0 {
                 Divider().padding(.horizontal, 80)
-                MediaItemRow("itemdetail.recommended.label", self.recommendations)
+                MediaItemRow("itemdetail.recommended.label", self.similarItems)
             } else {
                 EmptyView()
             }

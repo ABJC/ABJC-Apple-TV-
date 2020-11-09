@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import abjc_core
 import JellyKit
 import URLImage
 

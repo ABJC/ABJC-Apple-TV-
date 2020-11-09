@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import abjc_core
 import JellyKit
 
 struct PreferencesView: View {
