@@ -29,7 +29,7 @@ struct CollectionView: View {
     
     var body: some View {
         NavigationView {
-            ScrollView([.vertical]) {
+            ScrollView(.vertical, showsIndicators: true) {
                 LazyVStack(alignment: .leading) {
                     ForEach(self.genres, id:\.id) { genre in
                         MediaItemRow(genre.name, self.items.filter({ $0.genres.contains(genre) }))
@@ -49,7 +49,6 @@ struct CollectionView: View {
         session.api.getItems(type) { result in
             switch result {
                 case .success(let items):
-                    session.updateItems(items)
                     self.items = items
                 case .failure(let error):
                     session.alert = AlertError("alerts.apierror", error.localizedDescription)

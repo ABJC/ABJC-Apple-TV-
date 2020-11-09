@@ -22,7 +22,8 @@ struct ClientPrefView: View {
             }
             
             Section(header: Label("pref.client.betaflags.label", systemImage: "exclamationmark.triangle.fill")) {
-                Toggle("pref.client.betaflags.playbackreporting", isOn: $session.preferences.beta_playbackReporting)
+//                Toggle("pref.client.betaflags.playbackreporting", isOn: $session.preferences.beta_playbackReporting)
+//                Toggle("pref.client.betaflags.playbackcontinuation", isOn: $session.preferences.beta_playbackContinuation)
             }
         }
     }

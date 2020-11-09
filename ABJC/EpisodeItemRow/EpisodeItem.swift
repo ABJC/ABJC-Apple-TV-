@@ -29,11 +29,6 @@ public struct EpisodeItem: View {
             Blur().clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
             URLImage(
                 url: session.api.getImageURL(for: item.id, .thumb),
-                options: URLImageOptions(
-                    identifier: item.id+"Thumb",
-                    expireAfter: .infinity,
-                    cachePolicy: .returnCacheElseLoad(cacheDelay: 0, downloadDelay: 0.25)
-                ),
                 empty: { self.placeholder },
                 inProgress: { progress in
                     Group {

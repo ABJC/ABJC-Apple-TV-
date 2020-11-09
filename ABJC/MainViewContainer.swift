@@ -15,7 +15,7 @@ struct MainViewContainer: View {
     @EnvironmentObject var playerStore: PlayerStore
     
     var body: some View {
-        Group() {
+        ZStack {
             if self.session.hasUser {
                 TabView() {
                     if session.preferences.showingWatchNowTab {
@@ -43,7 +43,6 @@ struct MainViewContainer: View {
                             })
                             .tag(3)
                     }
-                    
                     PreferencesView()
                         .tabItem({ Text("main.preferences.tablabel") })
                         .tag(4)
@@ -54,6 +53,16 @@ struct MainViewContainer: View {
         }
         .alert(item: $session.alert) { (alert) -> Alert in
             Alert(title: Text(alert.title), message: Text(alert.description), dismissButton: .default(Text("buttons.ok")))
+        }
+        .onAppear(perform: load)
+    }
+    
+    func load() {
+        session.api.getItems() { result in
+            switch result {
+                case .success(let items):session.updateItems(items)
+                case .failure(_ ): break
+            }
         }
     }
 }

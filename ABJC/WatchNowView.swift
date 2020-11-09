@@ -19,7 +19,7 @@ struct WatchNowView: View {
     var body: some View {
         NavigationView {
             ScrollView([.vertical]) {
-                LazyVStack(alignment: .leading) {
+                VStack(alignment: .leading) {
                     
                     /// Resumable Items
                     if !resumableItems.isEmpty {

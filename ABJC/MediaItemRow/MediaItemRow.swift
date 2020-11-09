@@ -30,7 +30,15 @@ public struct MediaItemRow: View {
             Text(label)
                 .font(.title3)
                 .padding(.horizontal, 80)
-            ScrollView([.horizontal]) {
+            ScrollView(.horizontal) {
+//                LazyHGrid(rows: [GridItem()], spacing: 48) {
+//                    ForEach(items, id:\.id) { item in
+//                        NavigationLink(destination: ItemDetailView(item)) {
+//                            MediaItem(item)
+//                        }
+//                        .buttonStyle(PlainButtonStyle())
+//                    }
+//                }
                 LazyHStack(spacing: 48) {
                     ForEach(items, id:\.id) { item in
                         NavigationLink(destination: ItemDetailView(item)) {

@@ -22,11 +22,6 @@ struct PeopleItem: View {
         VStack {
             URLImage(
                 url: session.api.getImageURL(for: person.id, .primary),
-                options: URLImageOptions(
-                    identifier: person.id+"Primary",
-                    expireAfter: .infinity,
-                    cachePolicy: .returnCacheElseLoad(cacheDelay: 0, downloadDelay: 0.25)
-                ),
                 empty: { Circle() },
                 inProgress: { progress in
                     Group {
